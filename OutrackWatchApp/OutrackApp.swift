@@ -8,10 +8,12 @@
 import SwiftUI
 
 @main
-struct Outrack_Watch_AppApp: App {
+struct OutrackApp: App {
+        
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SportsListView()
+                .background(Color(Color.primary))
         }
     }
 }
