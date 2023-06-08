@@ -1,0 +1,16 @@
+name: pull-request-workflow
+on: push
+
+jobs:
+  lint:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: fastlane lint
+  
+  build_watchos:
+    runs-on: macos-latest
+    needs: "lint"
+    steps:
+      - uses: actions/checkout@v2
+      - run: fastlane build_watchOS_app
