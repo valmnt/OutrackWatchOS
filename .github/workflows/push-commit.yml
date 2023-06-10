@@ -14,3 +14,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: fastlane build configuration:"Debug"
+  
+  build_in_release:
+    runs-on: macos-latest
+    needs: "lint"
+    steps:
+      - uses: actions/checkout@v2
+      - run: fastlane build configuration:"Release"
