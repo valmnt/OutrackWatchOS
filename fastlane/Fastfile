@@ -19,7 +19,6 @@ lane :lint do
   swiftlint(raise_if_swiftlint_error: true)
 end
 
-desc "Check if the application compiles"
 lane :build_watchOS_app do
   sh('xcodebuild -scheme OutrackWatchApp -project ../Outrack.xcodeproj -destination "platform=watchOS Simulator,name=Apple Watch Ultra (49mm)"')
 end
