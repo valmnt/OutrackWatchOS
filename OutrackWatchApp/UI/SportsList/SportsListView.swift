@@ -17,7 +17,7 @@ struct SportsListView: View {
                            alignment: .leading)
                     .foregroundColor(Color(Color.secondary))
                     .fontWeight(.bold)
-                
+
                 Sport(text: "Running", icon: "figure.run")
                 Sport(text: "Cycling", icon: "figure.outdoor.cycle")
                 Sport(text: "Fitness", icon: "figure.flexibility")
@@ -30,7 +30,7 @@ struct SportsListView: View {
 private struct Sport: View {
     let text: String
     let icon: String
-    
+
     var body: some View {
         VStack {
             ZStack {
@@ -38,17 +38,17 @@ private struct Sport: View {
                     .fill(Color(Color.secondary))
                     .cornerRadius(17)
                     .frame(width: 180, height: 40)
-                
+
                 HStack {
                     Image(systemName: icon)
                         .font(.system(size: 22))
                         .foregroundColor(Color(Color.primary))
-                    
+
                     Text(text)
                         .font(.system(size: 17))
                         .foregroundColor(Color(Color.primary))
                 }
-                
+
             }
             .padding(.bottom, 12)
         }

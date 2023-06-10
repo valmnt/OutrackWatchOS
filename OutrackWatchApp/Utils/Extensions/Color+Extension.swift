@@ -11,7 +11,7 @@ extension Color {
     static var primary: String {
         "black"
     }
-    
+
     static var secondary: String {
         "orange"
     }

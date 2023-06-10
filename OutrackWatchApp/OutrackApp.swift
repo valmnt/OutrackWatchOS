@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct OutrackApp: App {
-        
+
     var body: some Scene {
         WindowGroup {
             SportsListView()
