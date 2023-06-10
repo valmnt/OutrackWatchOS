@@ -18,9 +18,18 @@ struct SportsListView: View {
                     .foregroundColor(Color(Color.secondary))
                     .fontWeight(.bold)
 
-                Sport(text: "Running", icon: "figure.run")
-                Sport(text: "Cycling", icon: "figure.outdoor.cycle")
-                Sport(text: "Fitness", icon: "figure.flexibility")
+                Sport(text: "Running",
+                      icon: "figure.run",
+                      width: geometry.size.width * 0.9,
+                      height: geometry.size.height * 0.22)
+                Sport(text: "Cycling",
+                      icon: "figure.outdoor.cycle",
+                      width: geometry.size.width * 0.9,
+                      height: geometry.size.height * 0.22)
+                Sport(text: "Fitness",
+                      icon: "figure.flexibility",
+                      width: geometry.size.width * 0.9,
+                      height: geometry.size.height * 0.22)
             }
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
         }
@@ -30,6 +39,8 @@ struct SportsListView: View {
 private struct Sport: View {
     let text: String
     let icon: String
+    let width: CGFloat
+    let height: CGFloat
 
     var body: some View {
         VStack {
@@ -37,7 +48,7 @@ private struct Sport: View {
                 Rectangle()
                     .fill(Color(Color.secondary))
                     .cornerRadius(17)
-                    .frame(width: 180, height: 40)
+                    .frame(width: width, height: height)
 
                 HStack {
                     Image(systemName: icon)
