@@ -8,9 +8,9 @@ jobs:
       - uses: actions/checkout@v2
       - run: fastlane lint
   
-  build_watchOS_app:
+  build_in_debug:
     runs-on: macos-latest
     needs: "lint"
     steps:
       - uses: actions/checkout@v2
-      - run: fastlane build_watchOS_app
+      - run: fastlane build configuration:"Debug"

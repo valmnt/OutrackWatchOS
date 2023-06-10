@@ -12,7 +12,6 @@
 		C931DD0E2A311BE400D08384 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C931DD0A2A311BE400D08384 /* Preview Assets.xcassets */; };
 		C931DD0F2A311BE400D08384 /* OutrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C931DD0B2A311BE400D08384 /* OutrackApp.swift */; };
 		C931DD112A311BFE00D08384 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C931DD102A311BFE00D08384 /* Color+Extension.swift */; };
-		C9E78CA22A28C04700B8D596 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C91DCEF02A289E8D0077FC02 /* CoreBluetooth.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +29,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9E78CA22A28C04700B8D596 /* CoreBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,7 +342,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.valmnt.Outrack.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.outrack.outrackwatchos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -376,7 +374,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.valmnt.Outrack.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.outrack.outrackwatchos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
