@@ -12,8 +12,9 @@ struct OutrackApp: App {
 
     var body: some Scene {
         WindowGroup {
-            SportsListView()
-                .background(Color(Color.primary))
+            NavigationStack {
+                SportsListView()
+            }
         }
     }
 }

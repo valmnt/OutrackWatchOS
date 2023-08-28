@@ -12,6 +12,9 @@
 		C931DD0E2A311BE400D08384 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C931DD0A2A311BE400D08384 /* Preview Assets.xcassets */; };
 		C931DD0F2A311BE400D08384 /* OutrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C931DD0B2A311BE400D08384 /* OutrackApp.swift */; };
 		C931DD112A311BFE00D08384 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C931DD102A311BFE00D08384 /* Color+Extension.swift */; };
+		C9BCCA3D2A9D37CD002D77E5 /* HKWorkoutActivityType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BCCA3C2A9D37CD002D77E5 /* HKWorkoutActivityType+Extension.swift */; };
+		C9BCCA3F2A9D3801002D77E5 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BCCA3E2A9D3801002D77E5 /* SessionView.swift */; };
+		C9BCCA422A9D3861002D77E5 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BCCA412A9D3861002D77E5 /* WorkoutManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		C931DD0A2A311BE400D08384 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C931DD0B2A311BE400D08384 /* OutrackApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutrackApp.swift; sourceTree = "<group>"; };
 		C931DD102A311BFE00D08384 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		C9BCCA3C2A9D37CD002D77E5 /* HKWorkoutActivityType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HKWorkoutActivityType+Extension.swift"; sourceTree = "<group>"; };
+		C9BCCA3E2A9D3801002D77E5 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
+		C9BCCA412A9D3861002D77E5 /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,22 +81,16 @@
 		C931DD032A311BE400D08384 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				C931DD042A311BE400D08384 /* SportsList */,
+				C931DD052A311BE400D08384 /* SportsListView.swift */,
+				C9BCCA3E2A9D3801002D77E5 /* SessionView.swift */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		C931DD042A311BE400D08384 /* SportsList */ = {
-			isa = PBXGroup;
-			children = (
-				C931DD052A311BE400D08384 /* SportsListView.swift */,
-			);
-			path = SportsList;
 			sourceTree = "<group>";
 		};
 		C931DD072A311BE400D08384 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C9BCCA402A9D3856002D77E5 /* Managers */,
 				C931DD082A311BE400D08384 /* Extensions */,
 			);
 			path = Utils;
@@ -100,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				C931DD102A311BFE00D08384 /* Color+Extension.swift */,
+				C9BCCA3C2A9D37CD002D77E5 /* HKWorkoutActivityType+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -110,6 +111,14 @@
 				C931DD0A2A311BE400D08384 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C9BCCA402A9D3856002D77E5 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C9BCCA412A9D3861002D77E5 /* WorkoutManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,8 +213,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C931DD0C2A311BE400D08384 /* SportsListView.swift in Sources */,
+				C9BCCA3F2A9D3801002D77E5 /* SessionView.swift in Sources */,
+				C9BCCA3D2A9D37CD002D77E5 /* HKWorkoutActivityType+Extension.swift in Sources */,
 				C931DD112A311BFE00D08384 /* Color+Extension.swift in Sources */,
 				C931DD0F2A311BE400D08384 /* OutrackApp.swift in Sources */,
+				C9BCCA422A9D3861002D77E5 /* WorkoutManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,7 +361,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 9.4;
 			};
 			name = Debug;
 		};
@@ -382,7 +394,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 9.4;
 			};
 			name = Release;
 		};
