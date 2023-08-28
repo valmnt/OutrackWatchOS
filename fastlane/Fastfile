@@ -18,11 +18,3 @@ default_platform(:ios)
 lane :lint do
   swiftlint(raise_if_swiftlint_error: true)
 end
-
-lane :build do |lane|
-  if !lane[:configuration]
-    raise "No configuration specified!".red
-  end
-
-  sh("xcodebuild -scheme OutrackWatchApp -project ../Outrack.xcodeproj -configuration #{lane[:configuration]} -destination 'platform=watchOS Simulator,name=Apple Watch Ultra (49mm)'")
-end
