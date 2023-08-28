@@ -13,7 +13,7 @@ struct OutrackApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                SportsListView()
+                SportListView()
             }
         }
     }

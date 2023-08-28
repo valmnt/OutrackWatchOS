@@ -1,5 +1,5 @@
 //
-//  SportsListView.swift
+//  SportListView.swift
 //  Outrack Watch App
 //
 //  Created by Valentin Mont on 07/06/2023.
@@ -8,7 +8,7 @@
 import SwiftUI
 import HealthKit
 
-struct SportsListView: View {
+struct SportListView: View {
 
     var workoutTypes: [HKWorkoutActivityType] = [.cycling, .running, .crossTraining]
 
@@ -25,8 +25,8 @@ struct SportsListView: View {
     }
 }
 
-struct SportsList_Previews: PreviewProvider {
+struct SportList_Previews: PreviewProvider {
     static var previews: some View {
-        SportsListView()
+        SportListView()
     }
 }

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C931DD0C2A311BE400D08384 /* SportsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C931DD052A311BE400D08384 /* SportsListView.swift */; };
+		C931DD0C2A311BE400D08384 /* SportListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C931DD052A311BE400D08384 /* SportListView.swift */; };
 		C931DD0D2A311BE400D08384 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C931DD062A311BE400D08384 /* Assets.xcassets */; };
 		C931DD0E2A311BE400D08384 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C931DD0A2A311BE400D08384 /* Preview Assets.xcassets */; };
 		C931DD0F2A311BE400D08384 /* OutrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C931DD0B2A311BE400D08384 /* OutrackApp.swift */; };
@@ -20,7 +20,7 @@
 /* Begin PBXFileReference section */
 		C91DCED82A289CE10077FC02 /* OutrackWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutrackWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91DCEF02A289E8D0077FC02 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS9.4.sdk/System/Library/Frameworks/CoreBluetooth.framework; sourceTree = DEVELOPER_DIR; };
-		C931DD052A311BE400D08384 /* SportsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportsListView.swift; sourceTree = "<group>"; };
+		C931DD052A311BE400D08384 /* SportListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportListView.swift; sourceTree = "<group>"; };
 		C931DD062A311BE400D08384 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C931DD0A2A311BE400D08384 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C931DD0B2A311BE400D08384 /* OutrackApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutrackApp.swift; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 		C931DD032A311BE400D08384 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				C931DD052A311BE400D08384 /* SportsListView.swift */,
+				C931DD052A311BE400D08384 /* SportListView.swift */,
 				C9BCCA3E2A9D3801002D77E5 /* SessionView.swift */,
 			);
 			path = UI;
@@ -212,7 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C931DD0C2A311BE400D08384 /* SportsListView.swift in Sources */,
+				C931DD0C2A311BE400D08384 /* SportListView.swift in Sources */,
 				C9BCCA3F2A9D3801002D77E5 /* SessionView.swift in Sources */,
 				C9BCCA3D2A9D37CD002D77E5 /* HKWorkoutActivityType+Extension.swift in Sources */,
 				C931DD112A311BFE00D08384 /* Color+Extension.swift in Sources */,
