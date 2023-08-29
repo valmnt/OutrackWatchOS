@@ -21,7 +21,7 @@ struct SessionView: View {
     }
 
     enum Tab {
-        case controls, metrics, nowPlaying
+        case controls, metrics, stepsView
     }
 
     var body: some View {
@@ -29,7 +29,7 @@ struct SessionView: View {
             TabView(selection: $selection) {
                 ControlsView().tag(Tab.controls)
                 MetricsView().tag(Tab.metrics)
-                NowPlayingView().tag(Tab.nowPlaying)
+                StepsView().tag(Tab.stepsView)
             }
             .navigationTitle(selectedWorkout?.name ?? "")
             .navigationBarBackButtonHidden(workoutManager.started)

@@ -1,5 +1,5 @@
 //
-//  NowPlayingView.swift
+//  StepsView.swift
 //  OutrackWatchApp
 //
 //  Created by Valentin Mont on 29/08/2023.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct NowPlayingView: View {
+struct StepsView: View {
     var body: some View {
-        Text("Now Playing")
+        Text("Steps")
     }
 }
 
-struct NowPlayingView_Previews: PreviewProvider {
+struct StepsView_Previews: PreviewProvider {
     static var previews: some View {
-        NowPlayingView()
+        StepsView()
     }
 }
