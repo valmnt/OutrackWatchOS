@@ -13,4 +13,26 @@ class WorkoutManager: NSObject, ObservableObject {
     static private(set) var shared = WorkoutManager()
 
     var selectedWorkout: HKWorkoutActivityType?
+
+    let healthStore = HKHealthStore()
+
+    func requestAuthorization() {
+        let typesToShare: Set = [
+            HKQuantityType.workoutType()
+        ]
+
+        let typesToRead: Set = [
+            HKQuantityType.quantityType(forIdentifier: .heartRate)!,
+            HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
+            HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!,
+            HKQuantityType.quantityType(forIdentifier: .distanceCycling)!,
+            HKObjectType.activitySummaryType()
+        ]
+
+        healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead) { (_, error) in
+            if let error = error {
+                print("🚨 An error occured with HK authorization : \(error.localizedDescription)")
+            }
+        }
+    }
 }

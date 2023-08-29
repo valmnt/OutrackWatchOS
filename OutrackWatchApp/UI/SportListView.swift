@@ -22,6 +22,9 @@ struct SportListView: View {
         }
         .listStyle(.carousel)
         .navigationBarTitle("Workouts")
+        .onAppear {
+            WorkoutManager.shared.requestAuthorization()
+        }
     }
 }
 
