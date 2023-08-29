@@ -10,12 +10,23 @@ import HealthKit
 
 struct SessionView: View {
 
+    @State private var selection: Tab = .controls
+
     init(selectedWorkout: HKWorkoutActivityType? = nil) {
         WorkoutManager.shared.selectedWorkout = selectedWorkout
     }
 
+    enum Tab {
+        case controls, metrics, nowPlaying
+    }
+
     var body: some View {
-        Text(WorkoutManager.shared.selectedWorkout?.name ?? "Error")
+        TabView(selection: $selection) {
+            ControlsView().tag(Tab.controls)
+            MetricsView().tag(Tab.metrics)
+            NowPlayingView().tag(Tab.nowPlaying)
+        }
+        .navigationTitle(WorkoutManager.shared.selectedWorkout?.name ?? "")
     }
 }
 
