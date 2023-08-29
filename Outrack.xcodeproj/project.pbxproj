@@ -18,6 +18,7 @@
 		D713ACB52A9DE52E008BF7BC /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713ACB42A9DE52E008BF7BC /* ControlsView.swift */; };
 		D713ACB72A9DE543008BF7BC /* MetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713ACB62A9DE543008BF7BC /* MetricsView.swift */; };
 		D713ACB92A9DE556008BF7BC /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713ACB82A9DE556008BF7BC /* NowPlayingView.swift */; };
+		D713ACBC2A9E0C8E008BF7BC /* WorkoutResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D713ACBB2A9E0C8E008BF7BC /* WorkoutResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		D713ACB62A9DE543008BF7BC /* MetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsView.swift; sourceTree = "<group>"; };
 		D713ACB82A9DE556008BF7BC /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 		D713ACBA2A9DEAD2008BF7BC /* OutrackWatchApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OutrackWatchApp.entitlements; sourceTree = "<group>"; };
+		D713ACBB2A9E0C8E008BF7BC /* WorkoutResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			children = (
 				D713ACB22A9DE4F5008BF7BC /* Session */,
 				C931DD052A311BE400D08384 /* SportListView.swift */,
+				D713ACBB2A9E0C8E008BF7BC /* WorkoutResultView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				C931DD0F2A311BE400D08384 /* OutrackApp.swift in Sources */,
 				D713ACB72A9DE543008BF7BC /* MetricsView.swift in Sources */,
 				C9BCCA422A9D3861002D77E5 /* WorkoutManager.swift in Sources */,
+				D713ACBC2A9E0C8E008BF7BC /* WorkoutResultView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

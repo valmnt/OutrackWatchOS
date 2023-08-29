@@ -25,14 +25,17 @@ struct SessionView: View {
     }
 
     var body: some View {
-        TabView(selection: $selection) {
-            ControlsView().tag(Tab.controls)
-            MetricsView().tag(Tab.metrics)
-            NowPlayingView().tag(Tab.nowPlaying)
-        }
-        .navigationTitle(selectedWorkout?.name ?? "")
-        .onAppear {
-            workoutManager.selectedWorkout = selectedWorkout
+        VStack {
+            TabView(selection: $selection) {
+                ControlsView().tag(Tab.controls)
+                MetricsView().tag(Tab.metrics)
+                NowPlayingView().tag(Tab.nowPlaying)
+            }
+            .navigationTitle(selectedWorkout?.name ?? "")
+            .navigationBarBackButtonHidden()
+            .onAppear {
+                workoutManager.selectedWorkout = selectedWorkout
+            }
         }
     }
 }

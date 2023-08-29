@@ -28,6 +28,9 @@ struct SportListView: View {
         .onAppear {
             workoutManager.requestAuthorization()
         }
+        .sheet(isPresented: $workoutManager.showingWorkoutResult) {
+            WorkoutResultView()
+        }
     }
 }
 

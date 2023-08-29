@@ -10,13 +10,16 @@ import SwiftUI
 struct ControlsView: View {
 
     @EnvironmentObject var workoutManager: WorkoutManager
+    @Environment(\.dismiss) var dismiss
 
     var body: some View {
         HStack {
             if workoutManager.started {
                 VStack {
                     Button {
-                        workoutManager.end()
+                        workoutManager.end {
+                            dismiss()
+                        }
                     } label: {
                         Image(systemName: "xmark")
                     }
@@ -26,7 +29,7 @@ struct ControlsView: View {
                 }
                 VStack {
                     Button {
-                        workoutManager.pause()
+                        workoutManager.togglePause()
                     } label: {
                         Image(systemName: workoutManager.running ? "pause" : "play")
                     }
