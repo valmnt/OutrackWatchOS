@@ -32,7 +32,7 @@ struct SessionView: View {
                 NowPlayingView().tag(Tab.nowPlaying)
             }
             .navigationTitle(selectedWorkout?.name ?? "")
-            .navigationBarBackButtonHidden()
+            .navigationBarBackButtonHidden(workoutManager.started)
             .onAppear {
                 workoutManager.selectedWorkout = selectedWorkout
             }
