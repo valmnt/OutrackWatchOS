@@ -10,10 +10,14 @@ import HealthKit
 
 struct SessionView: View {
 
+    @EnvironmentObject var workoutManager: WorkoutManager
+
     @State private var selection: Tab = .controls
 
+    private var selectedWorkout: HKWorkoutActivityType?
+
     init(selectedWorkout: HKWorkoutActivityType? = nil) {
-        WorkoutManager.shared.selectedWorkout = selectedWorkout
+        self.selectedWorkout = selectedWorkout
     }
 
     enum Tab {
@@ -26,7 +30,10 @@ struct SessionView: View {
             MetricsView().tag(Tab.metrics)
             NowPlayingView().tag(Tab.nowPlaying)
         }
-        .navigationTitle(WorkoutManager.shared.selectedWorkout?.name ?? "")
+        .navigationTitle(selectedWorkout?.name ?? "")
+        .onAppear {
+            workoutManager.selectedWorkout = selectedWorkout
+        }
     }
 }
 

@@ -10,20 +10,23 @@ import HealthKit
 
 struct SportListView: View {
 
+    @EnvironmentObject var workoutManager: WorkoutManager
+
     var workoutTypes: [HKWorkoutActivityType] = [.cycling, .running, .crossTraining]
 
     var body: some View {
         List(workoutTypes) { workoutType in
             NavigationLink(workoutType.name, value: workoutType)
-                .padding(EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5))
+            .padding(EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5))
         }
         .navigationDestination(for: HKWorkoutActivityType.self) { workoutType in
             SessionView(selectedWorkout: workoutType)
+            .environmentObject(workoutManager)
         }
         .listStyle(.carousel)
         .navigationBarTitle("Workouts")
         .onAppear {
-            WorkoutManager.shared.requestAuthorization()
+            workoutManager.requestAuthorization()
         }
     }
 }

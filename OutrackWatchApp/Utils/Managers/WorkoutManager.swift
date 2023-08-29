@@ -10,6 +10,9 @@ import HealthKit
 
 class WorkoutManager: NSObject, ObservableObject {
 
+    @Published var running = false
+    @Published var started = false
+
     static private(set) var shared = WorkoutManager()
 
     var selectedWorkout: HKWorkoutActivityType?
@@ -34,5 +37,22 @@ class WorkoutManager: NSObject, ObservableObject {
                 print("🚨 An error occured with HK authorization : \(error.localizedDescription)")
             }
         }
+    }
+}
+
+// Controller
+extension WorkoutManager {
+    func start() {
+        started = true
+        running = true
+    }
+
+    func pause() {
+        running.toggle()
+    }
+
+    func end() {
+        started = false
+        running = false
     }
 }
