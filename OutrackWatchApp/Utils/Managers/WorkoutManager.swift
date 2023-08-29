@@ -43,9 +43,12 @@ class WorkoutManager: NSObject, ObservableObject {
         }
     }
 
-    func startWorkout(workoutType: HKWorkoutActivityType, locationType: HKWorkoutSessionLocationType) {
+    func startWorkout() {
+        guard let activityType = selectedWorkout,
+              let locationType = activityType.locationType else { return }
+
         let configuration = HKWorkoutConfiguration()
-        configuration.activityType = workoutType
+        configuration.activityType = activityType
         configuration.locationType = locationType
 
         do {
@@ -64,6 +67,10 @@ class WorkoutManager: NSObject, ObservableObject {
         let startDate = Date()
         session?.startActivity(with: startDate)
         builder?.beginCollection(withStart: startDate) { (_, _) in
+            DispatchQueue.main.async {
+                self.started = true
+                self.running = true
+            }
             // TODO: workout started
         }
     }
@@ -79,22 +86,6 @@ extension WorkoutManager {
         }
     }
 
-    func resume() {
-        session?.resume()
-        running = true
-    }
-
-    func start() {
-        session?.resume()
-        started = true
-        running = true
-    }
-
-    func pause() {
-        session?.pause()
-        running = false
-    }
-
     func end(callback: () -> Void) {
         session?.end()
         reset()
@@ -102,7 +93,17 @@ extension WorkoutManager {
         callback()
     }
 
-    func reset() {
+    private func resume() {
+        session?.resume()
+        running = true
+    }
+
+    private func pause() {
+        session?.pause()
+        running = false
+    }
+
+    private func reset() {
         started = false
         running = false
         builder = nil

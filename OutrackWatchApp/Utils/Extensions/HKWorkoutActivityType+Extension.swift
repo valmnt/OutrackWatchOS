@@ -25,4 +25,17 @@ extension HKWorkoutActivityType: Identifiable {
             return ""
         }
     }
+
+    var locationType: HKWorkoutSessionLocationType? {
+        switch self {
+        case .running:
+            return .outdoor
+        case .cycling:
+            return .outdoor
+        case .crossTraining:
+            return .indoor
+        default:
+            return nil
+        }
+    }
 }

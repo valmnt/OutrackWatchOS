@@ -40,7 +40,7 @@ struct ControlsView: View {
             } else {
                 VStack {
                     Button {
-                        workoutManager.start()
+                        workoutManager.startWorkout()
                     } label: {
                         Image(systemName: "play")
                     }
