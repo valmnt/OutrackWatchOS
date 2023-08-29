@@ -20,6 +20,7 @@ class WorkoutManager: NSObject, ObservableObject {
     var selectedWorkout: HKWorkoutActivityType?
     var builder: HKLiveWorkoutBuilder?
     var session: HKWorkoutSession?
+    var endCallback: (() -> Void)?
 
     let healthStore = HKHealthStore()
 
@@ -85,11 +86,12 @@ extension WorkoutManager {
         }
     }
 
-    func end(callback: () -> Void) {
+    func end(waitingCallback: () -> Void, endCallback: @escaping (() -> Void)) {
+        self.endCallback = endCallback
+        started = false
+        running = false
+        waitingCallback()
         session?.end()
-        reset()
-        showingWorkoutResult = true
-        callback()
     }
 
     private func resume() {
@@ -103,8 +105,6 @@ extension WorkoutManager {
     }
 
     private func reset() {
-        started = false
-        running = false
         builder = nil
         workout = nil
         session = nil
@@ -119,7 +119,12 @@ extension WorkoutManager: HKWorkoutSessionDelegate {
         if toState == .ended {
             builder?.endCollection(withEnd: date) { (_, _) in
                 self.builder?.finishWorkout { (workout, _) in
-                    self.workout = workout
+                    DispatchQueue.main.async {
+                        self.workout = workout
+                        self.reset()
+                        self.endCallback?()
+                        self.showingWorkoutResult = true
+                    }
                 }
             }
         }
@@ -132,5 +137,7 @@ extension WorkoutManager: HKWorkoutSessionDelegate {
 extension WorkoutManager: HKLiveWorkoutBuilderDelegate {
     func workoutBuilderDidCollectEvent(_ workoutBuilder: HKLiveWorkoutBuilder) {}
 
-    func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>) {}
+    func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>) {
+        print("LOG: \(collectedTypes)")
+    }
 }

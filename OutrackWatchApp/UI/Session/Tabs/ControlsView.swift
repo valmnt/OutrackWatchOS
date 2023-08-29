@@ -12,30 +12,38 @@ struct ControlsView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
     @Environment(\.dismiss) var dismiss
 
+    var progressionViewCallback: (() -> Void)?
+
     var body: some View {
         HStack {
             if workoutManager.started {
-                VStack {
-                    Button {
-                        workoutManager.end {
-                            dismiss()
+                ZStack {
+                    HStack {
+                        VStack {
+                            Button {
+                                workoutManager.end(waitingCallback: {
+                                    progressionViewCallback?()
+                                }, endCallback: {
+                                    dismiss()
+                                })
+                            } label: {
+                                Image(systemName: "xmark")
+                            }
+                            .tint(.red)
+                            .font(.title2)
+                            Text("End")
                         }
-                    } label: {
-                        Image(systemName: "xmark")
+                        VStack {
+                            Button {
+                                workoutManager.togglePause()
+                            } label: {
+                                Image(systemName: workoutManager.running ? "pause" : "play")
+                            }
+                            .tint(.yellow)
+                            .font(.title2)
+                            Text(workoutManager.running ? "Pause" : "Resume")
+                        }
                     }
-                    .tint(.red)
-                    .font(.title2)
-                    Text("End")
-                }
-                VStack {
-                    Button {
-                        workoutManager.togglePause()
-                    } label: {
-                        Image(systemName: workoutManager.running ? "pause" : "play")
-                    }
-                    .tint(.yellow)
-                    .font(.title2)
-                    Text(workoutManager.running ? "Pause" : "Resume")
                 }
             } else {
                 VStack {

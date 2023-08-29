@@ -13,6 +13,7 @@ struct SessionView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
 
     @State private var selection: Tab = .controls
+    @State private var displayProgressionView: Bool = false
 
     private var selectedWorkout: HKWorkoutActivityType?
 
@@ -25,17 +26,24 @@ struct SessionView: View {
     }
 
     var body: some View {
-        VStack {
-            TabView(selection: $selection) {
-                ControlsView().tag(Tab.controls)
-                MetricsView().tag(Tab.metrics)
-                StepsView().tag(Tab.stepsView)
+        if !displayProgressionView {
+            VStack {
+                TabView(selection: $selection) {
+                    ControlsView {
+                        displayProgressionView = true
+                    }.tag(Tab.controls)
+                    MetricsView().tag(Tab.metrics)
+                    StepsView().tag(Tab.stepsView)
+                }
+                .navigationTitle(selectedWorkout?.name ?? "")
+                .navigationBarBackButtonHidden(workoutManager.started)
+                .onAppear {
+                    workoutManager.selectedWorkout = selectedWorkout
+                }
             }
-            .navigationTitle(selectedWorkout?.name ?? "")
-            .navigationBarBackButtonHidden(workoutManager.started)
-            .onAppear {
-                workoutManager.selectedWorkout = selectedWorkout
-            }
+        } else {
+            ProgressView()
+            .navigationBarBackButtonHidden()
         }
     }
 }
