@@ -71,7 +71,6 @@ class WorkoutManager: NSObject, ObservableObject {
                 self.started = true
                 self.running = true
             }
-            // TODO: workout started
         }
     }
 }
@@ -116,7 +115,15 @@ extension WorkoutManager {
 // MARK: - HKWorkoutSessionDelegate
 extension WorkoutManager: HKWorkoutSessionDelegate {
     func workoutSession(_ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState,
-                        from fromState: HKWorkoutSessionState, date: Date) {}
+                        from fromState: HKWorkoutSessionState, date: Date) {
+        if toState == .ended {
+            builder?.endCollection(withEnd: date) { (_, _) in
+                self.builder?.finishWorkout { (workout, _) in
+                    self.workout = workout
+                }
+            }
+        }
+    }
 
     func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) {}
 }
