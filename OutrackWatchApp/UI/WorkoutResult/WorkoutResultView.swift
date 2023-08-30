@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WorkoutResultView: View {
 
+    @ObservedObject var viewModel: WorkoutResultViewModel = WorkoutResultViewModel()
     @EnvironmentObject var workoutManager: WorkoutManager
     @Environment(\.dismiss) var dismiss
 
@@ -19,6 +20,9 @@ struct WorkoutResultView: View {
                 workoutManager.reset()
                 dismiss()
             }
+        }
+        .onAppear {
+            viewModel.workout = workoutManager.workout
         }
     }
 }
