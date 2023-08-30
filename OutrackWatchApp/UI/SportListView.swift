@@ -20,7 +20,7 @@ struct SportListView: View {
             .padding(EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5))
         }
         .navigationDestination(for: HKWorkoutActivityType.self) { workoutType in
-            SessionView(selectedWorkout: workoutType)
+            SessionView(selectedWorkoutActivity: workoutType)
             .environmentObject(workoutManager)
         }
         .listStyle(.carousel)
@@ -28,8 +28,14 @@ struct SportListView: View {
         .onAppear {
             workoutManager.requestAuthorization()
         }
-        .sheet(isPresented: $workoutManager.showingWorkoutResult) {
+        .sheet(isPresented: $workoutManager.ended) {
             WorkoutResultView()
+            .environmentObject(workoutManager)
+            .toolbar(content: {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("") {}
+                }
+            })
         }
     }
 }

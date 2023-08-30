@@ -10,20 +10,24 @@ import HealthKit
 
 class WorkoutManager: NSObject, ObservableObject {
 
-    @Published var running = false
-    @Published var started = false
-    @Published var workout: HKWorkout?
-    @Published var showingWorkoutResult: Bool = false
+    // MARK: - States
+    @Published private(set) var started = false
+    @Published private(set) var running = false
+    @Published var ended = false
 
-    static private(set) var shared = WorkoutManager()
+    // MARK: - HK Variables
+    @Published private(set) var workout: HKWorkout?
 
-    var selectedWorkout: HKWorkoutActivityType?
-    var builder: HKLiveWorkoutBuilder?
-    var session: HKWorkoutSession?
-    var endCallback: (() -> Void)?
+    private let healthStore = HKHealthStore()
 
-    let healthStore = HKHealthStore()
+    private var builder: HKLiveWorkoutBuilder?
+    private var session: HKWorkoutSession?
+    var selectedWorkoutActivity: HKWorkoutActivityType?
 
+    // MARK: - Callbacks
+    private var endCallback: (() -> Void)?
+
+    // MARK: - Methods
     func requestAuthorization() {
         let typesToShare: Set = [
             HKQuantityType.workoutType()
@@ -45,7 +49,7 @@ class WorkoutManager: NSObject, ObservableObject {
     }
 
     func startWorkout() {
-        guard let activityType = selectedWorkout,
+        guard let activityType = selectedWorkoutActivity,
               let locationType = activityType.locationType else { return }
 
         let configuration = HKWorkoutConfiguration()
@@ -104,11 +108,13 @@ extension WorkoutManager {
         running = false
     }
 
-    private func reset() {
+    func reset() {
+        ended = false
         builder = nil
         workout = nil
         session = nil
-        selectedWorkout = nil
+        endCallback = nil
+        selectedWorkoutActivity = nil
     }
 }
 
@@ -121,9 +127,8 @@ extension WorkoutManager: HKWorkoutSessionDelegate {
                 self.builder?.finishWorkout { (workout, _) in
                     DispatchQueue.main.async {
                         self.workout = workout
-                        self.reset()
                         self.endCallback?()
-                        self.showingWorkoutResult = true
+                        self.ended = true
                     }
                 }
             }
@@ -138,6 +143,15 @@ extension WorkoutManager: HKLiveWorkoutBuilderDelegate {
     func workoutBuilderDidCollectEvent(_ workoutBuilder: HKLiveWorkoutBuilder) {}
 
     func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>) {
-        print("LOG: \(collectedTypes)")
+        for type in collectedTypes {
+            guard let quantityType = type as? HKQuantityType,
+                  let statistics = workoutBuilder.statistics(for: quantityType) else { return }
+
+            updateStatistics(statistics)
+        }
+    }
+
+    func updateStatistics(_ statistics: HKStatistics) {
+
     }
 }

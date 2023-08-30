@@ -15,10 +15,10 @@ struct SessionView: View {
     @State private var selection: Tab = .controls
     @State private var displayProgressionView: Bool = false
 
-    private var selectedWorkout: HKWorkoutActivityType?
+    private var selectedWorkoutActivity: HKWorkoutActivityType?
 
-    init(selectedWorkout: HKWorkoutActivityType? = nil) {
-        self.selectedWorkout = selectedWorkout
+    init(selectedWorkoutActivity: HKWorkoutActivityType? = nil) {
+        self.selectedWorkoutActivity = selectedWorkoutActivity
     }
 
     enum Tab {
@@ -35,10 +35,10 @@ struct SessionView: View {
                     MetricsView().tag(Tab.metrics)
                     StepsView().tag(Tab.stepsView)
                 }
-                .navigationTitle(selectedWorkout?.name ?? "")
+                .navigationTitle(selectedWorkoutActivity?.name ?? "")
                 .navigationBarBackButtonHidden(workoutManager.started)
                 .onAppear {
-                    workoutManager.selectedWorkout = selectedWorkout
+                    workoutManager.selectedWorkoutActivity = selectedWorkoutActivity
                 }
             }
         } else {
