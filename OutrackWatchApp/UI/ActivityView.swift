@@ -1,5 +1,5 @@
 //
-//  SessionView.swift
+//  ActivityView.swift
 //  OutrackWatchApp
 //
 //  Created by Valentin Mont on 28/08/2023.
@@ -8,7 +8,7 @@
 import SwiftUI
 import HealthKit
 
-struct SessionView: View {
+struct ActivityView: View {
 
     @EnvironmentObject var workoutManager: WorkoutManager
 
@@ -22,7 +22,7 @@ struct SessionView: View {
     }
 
     enum Tab {
-        case controls, metrics, stepsView
+        case controls, metrics
     }
 
     var body: some View {
@@ -33,7 +33,6 @@ struct SessionView: View {
                         displayProgressionView = true
                     }.tag(Tab.controls)
                     MetricsView().tag(Tab.metrics)
-                    StepsView().tag(Tab.stepsView)
                 }
                 .navigationTitle(selectedWorkoutActivity?.name ?? "")
                 .navigationBarBackButtonHidden(workoutManager.started)
@@ -48,8 +47,8 @@ struct SessionView: View {
     }
 }
 
-struct SessionView_Previews: PreviewProvider {
+struct ActivityView_Previews: PreviewProvider {
     static var previews: some View {
-        SessionView()
+        ActivityView()
     }
 }

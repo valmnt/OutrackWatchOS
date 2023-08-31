@@ -20,7 +20,7 @@ struct SportListView: View {
             .padding(EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5))
         }
         .navigationDestination(for: HKWorkoutActivityType.self) { workoutType in
-            SessionView(selectedWorkoutActivity: workoutType)
+            ActivityView(selectedWorkoutActivity: workoutType)
             .environmentObject(workoutManager)
         }
         .listStyle(.carousel)
