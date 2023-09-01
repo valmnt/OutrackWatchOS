@@ -21,9 +21,9 @@ struct MetricsView: View {
                     .fontWeight(.semibold)
                     .foregroundColor(Color(Color.primary))
 
-                    if workoutManager.selectedWorkoutActivity?.locationType == .outdoor {
-                        Divider()
+                    Divider()
 
+                    if workoutManager.selectedWorkoutActivity?.locationType == .outdoor {
                         Text(Measurement(value: workoutManager.activityData[
                             workoutManager.selectedWorkoutActivity == .running
                             ? .distanceWalkingRunning
@@ -31,30 +31,27 @@ struct MetricsView: View {
                         ] ?? 0,
                                          unit: UnitLength.meters).formatted(.measurement(width: .abbreviated,
                                                                                          usage: .asProvided)))
+                        .frame(maxWidth: .infinity, alignment: .leading)
 
                         if workoutManager.selectedWorkoutActivity == .running {
-                            Divider()
-
                             Text((workoutManager.activityData[.runningSpeed] ?? 0)
                             .formatted(.number.precision(.fractionLength(0))) + " k/h")
+                            .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     }
 
-                    Divider()
-
                     Text((workoutManager.activityData[.heartRate] ?? 0)
                     .formatted(.number.precision(.fractionLength(0))) + " bpm")
-
-                    Divider()
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
                     Text(Measurement(value: workoutManager.activityData[.activeEnergyBurned] ?? 0,
                                      unit: UnitEnergy.kilocalories)
                         .formatted(.measurement(width: .abbreviated, usage: .workout,
                                     numberFormatStyle: .number.precision(.fractionLength(0)))))
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .font(.system(.title, design: .rounded).monospacedDigit().lowercaseSmallCaps())
+                .font(.system(.title2, design: .rounded).monospacedDigit().lowercaseSmallCaps())
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .ignoresSafeArea(edges: .bottom)
                 .scenePadding()
             }
         }
