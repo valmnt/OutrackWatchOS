@@ -12,6 +12,7 @@
 		C931DD0E2A311BE400D08384 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C931DD0A2A311BE400D08384 /* Preview Assets.xcassets */; };
 		C931DD0F2A311BE400D08384 /* OutrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C931DD0B2A311BE400D08384 /* OutrackApp.swift */; };
 		C931DD112A311BFE00D08384 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C931DD102A311BFE00D08384 /* Color+Extension.swift */; };
+		C963748E2AA1F815005895E6 /* HKStatistics+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963748D2AA1F815005895E6 /* HKStatistics+Extension.swift */; };
 		C9BCCA3D2A9D37CD002D77E5 /* HKWorkoutActivityType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BCCA3C2A9D37CD002D77E5 /* HKWorkoutActivityType+Extension.swift */; };
 		C9BCCA3F2A9D3801002D77E5 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BCCA3E2A9D3801002D77E5 /* ActivityView.swift */; };
 		C9BCCA422A9D3861002D77E5 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BCCA412A9D3861002D77E5 /* WorkoutManager.swift */; };
@@ -30,6 +31,7 @@
 		C931DD0A2A311BE400D08384 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C931DD0B2A311BE400D08384 /* OutrackApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutrackApp.swift; sourceTree = "<group>"; };
 		C931DD102A311BFE00D08384 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		C963748D2AA1F815005895E6 /* HKStatistics+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HKStatistics+Extension.swift"; sourceTree = "<group>"; };
 		C9BCCA3C2A9D37CD002D77E5 /* HKWorkoutActivityType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HKWorkoutActivityType+Extension.swift"; sourceTree = "<group>"; };
 		C9BCCA3E2A9D3801002D77E5 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		C9BCCA412A9D3861002D77E5 /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				C931DD102A311BFE00D08384 /* Color+Extension.swift */,
 				C9BCCA3C2A9D37CD002D77E5 /* HKWorkoutActivityType+Extension.swift */,
+				C963748D2AA1F815005895E6 /* HKStatistics+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D713ACB92A9DE556008BF7BC /* StepsView.swift in Sources */,
+				C963748E2AA1F815005895E6 /* HKStatistics+Extension.swift in Sources */,
 				D713ACB52A9DE52E008BF7BC /* ControlsView.swift in Sources */,
 				C931DD0C2A311BE400D08384 /* SportListView.swift in Sources */,
 				C9BCCA3F2A9D3801002D77E5 /* ActivityView.swift in Sources */,

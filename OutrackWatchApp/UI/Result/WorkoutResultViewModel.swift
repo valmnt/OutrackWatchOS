@@ -9,6 +9,12 @@ import Foundation
 import HealthKit
 
 class WorkoutResultViewModel: ObservableObject {
-    var workout: HKWorkout?
+    var workout: HKWorkout? {
+        didSet {
+            getResult()
+        }
+    }
 
+    func getResult() {
+    }
 }

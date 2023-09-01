@@ -160,43 +160,23 @@ extension WorkoutManager: HKLiveWorkoutBuilderDelegate {
         DispatchQueue.main.async {
             switch statistics.quantityType {
             case HKQuantityType.quantityType(forIdentifier: .heartRate):
-                self.activityData[HKQuantityTypeIdentifier.heartRate] = self.computeHearthRate(statistics: statistics)
+                self.activityData[HKQuantityTypeIdentifier.heartRate] =
+                statistics.mostRecentHearthRate()
             case HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned):
                 self.activityData[HKQuantityTypeIdentifier.activeEnergyBurned] =
-                self.computeActiveEnergyBurned(statistics: statistics)
+                statistics.sumActiveEnergyBurned()
             case HKQuantityType.quantityType(forIdentifier: .distanceCycling):
                 self.activityData[HKQuantityTypeIdentifier.distanceCycling] =
-                self.computeDistance(statistics: statistics)
+                statistics.sumDistance()
             case HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning):
                 self.activityData[HKQuantityTypeIdentifier.distanceWalkingRunning] =
-                self.computeDistance(statistics: statistics)
+                statistics.sumDistance()
             case HKQuantityType.quantityType(forIdentifier: .runningSpeed):
                 self.activityData[HKQuantityTypeIdentifier.runningSpeed] =
-                self.computeSpeed(statistics: statistics)
+                statistics.averageRunningSpeed()
             default:
                 return
             }
         }
-    }
-
-    private func computeHearthRate(statistics: HKStatistics) -> Double {
-        let heartRateUnit = HKUnit.count().unitDivided(by: HKUnit.minute())
-        return statistics.mostRecentQuantity()?.doubleValue(for: heartRateUnit) ?? 0
-    }
-
-    private func computeActiveEnergyBurned(statistics: HKStatistics) -> Double {
-        let energyUnit = HKUnit.kilocalorie()
-        return statistics.sumQuantity()?.doubleValue(for: energyUnit) ?? 0
-    }
-
-    private func computeDistance(statistics: HKStatistics) -> Double {
-        let meterUnit = HKUnit.meter()
-        return round(statistics.sumQuantity()?.doubleValue(for: meterUnit) ?? 0)
-    }
-
-    private func computeSpeed(statistics: HKStatistics) -> Double {
-        let speedUnit = HKUnit.meter().unitDivided(by: .second())
-        let speedInMetersPerSecond = statistics.averageQuantity()?.doubleValue(for: speedUnit) ?? 0
-        return speedInMetersPerSecond * 3.6
     }
 }
