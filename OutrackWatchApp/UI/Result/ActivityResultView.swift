@@ -45,7 +45,7 @@ struct ActivityResultView: View {
 
                         if viewModel.workout?.workoutActivityType == .running {
                             Text((viewModel.statistics[.runningSpeed] ?? 0)
-                            .formatted(.number.precision(.fractionLength(0))) + " k/h")
+                            .formatted(.number.precision(.fractionLength(0))) + " km/h")
                             .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     }
