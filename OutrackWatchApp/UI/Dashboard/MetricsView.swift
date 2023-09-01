@@ -17,7 +17,7 @@ struct MetricsView: View {
             TimelineView(MetricsTimelineSchedule(from: workoutManager.builder?.startDate ?? Date(),
                                                  isPaused: !workoutManager.running)) { _ in
                 VStack {
-                    Text(formatElapsedTime(workoutManager.builder?.elapsedTime))
+                    Text(workoutManager.builder?.elapsedTime.formatElapsedTime() ?? "00:00:00")
                     .fontWeight(.semibold)
                     .foregroundColor(Color(Color.primary))
 
@@ -55,16 +55,6 @@ struct MetricsView: View {
                 .scenePadding()
             }
         }
-    }
-
-    private func formatElapsedTime(_ elapsedTime: TimeInterval?) -> String {
-        guard let elapsedTime = elapsedTime else {
-            return "00:00:00"
-        }
-        let minutes = Int((elapsedTime.truncatingRemainder(dividingBy: 3600)) / 60)
-        let seconds = Int(elapsedTime.truncatingRemainder(dividingBy: 60))
-        let milliseconds = Int((elapsedTime.truncatingRemainder(dividingBy: 1)) * 100)
-        return String(format: "%02d:%02d:%02d", minutes, seconds, milliseconds)
     }
 }
 

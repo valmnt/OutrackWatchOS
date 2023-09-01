@@ -14,6 +14,11 @@ extension HKStatistics {
         return self.mostRecentQuantity()?.doubleValue(for: heartRateUnit) ?? 0
     }
 
+    func averageHearthRate() -> Double {
+        let heartRateUnit = HKUnit.count().unitDivided(by: HKUnit.minute())
+        return self.averageQuantity()?.doubleValue(for: heartRateUnit) ?? 0
+    }
+
     func sumActiveEnergyBurned() -> Double {
         let energyUnit = HKUnit.kilocalorie()
         return self.sumQuantity()?.doubleValue(for: energyUnit) ?? 0

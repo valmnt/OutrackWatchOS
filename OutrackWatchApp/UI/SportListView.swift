@@ -29,8 +29,7 @@ struct SportListView: View {
             workoutManager.requestAuthorization()
         }
         .sheet(isPresented: $workoutManager.ended) {
-            WorkoutResultView()
-            .environmentObject(workoutManager)
+            ActivityResultView(workout: workoutManager.workout, resetCallback: workoutManager.reset)
             .toolbar(content: {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("") {}
