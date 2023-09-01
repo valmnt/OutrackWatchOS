@@ -20,12 +20,15 @@ class WorkoutManager: NSObject, ObservableObject {
 
     private let healthStore = HKHealthStore()
 
-    private var builder: HKLiveWorkoutBuilder?
+    var builder: HKLiveWorkoutBuilder?
     private var session: HKWorkoutSession?
     var selectedWorkoutActivity: HKWorkoutActivityType?
 
     // MARK: - Callbacks
     private var endCallback: (() -> Void)?
+
+    // MARK: - ActivtiData
+    @Published var activityData: [HKQuantityTypeIdentifier: Double] = [:]
 
     // MARK: - Methods
     func requestAuthorization() {
@@ -38,6 +41,7 @@ class WorkoutManager: NSObject, ObservableObject {
             HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
             HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!,
             HKQuantityType.quantityType(forIdentifier: .distanceCycling)!,
+            HKQuantityType.quantityType(forIdentifier: .runningSpeed)!,
             HKObjectType.activitySummaryType()
         ]
 
@@ -114,6 +118,7 @@ extension WorkoutManager {
         workout = nil
         session = nil
         endCallback = nil
+        activityData = [:]
         selectedWorkoutActivity = nil
     }
 }
@@ -152,6 +157,46 @@ extension WorkoutManager: HKLiveWorkoutBuilderDelegate {
     }
 
     func updateStatistics(_ statistics: HKStatistics) {
+        DispatchQueue.main.async {
+            switch statistics.quantityType {
+            case HKQuantityType.quantityType(forIdentifier: .heartRate):
+                self.activityData[HKQuantityTypeIdentifier.heartRate] = self.computeHearthRate(statistics: statistics)
+            case HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned):
+                self.activityData[HKQuantityTypeIdentifier.activeEnergyBurned] =
+                self.computeActiveEnergyBurned(statistics: statistics)
+            case HKQuantityType.quantityType(forIdentifier: .distanceCycling):
+                self.activityData[HKQuantityTypeIdentifier.distanceCycling] =
+                self.computeDistance(statistics: statistics)
+            case HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning):
+                self.activityData[HKQuantityTypeIdentifier.distanceWalkingRunning] =
+                self.computeDistance(statistics: statistics)
+            case HKQuantityType.quantityType(forIdentifier: .runningSpeed):
+                self.activityData[HKQuantityTypeIdentifier.runningSpeed] =
+                self.computeSpeed(statistics: statistics)
+            default:
+                return
+            }
+        }
+    }
 
+    private func computeHearthRate(statistics: HKStatistics) -> Double {
+        let heartRateUnit = HKUnit.count().unitDivided(by: HKUnit.minute())
+        return statistics.mostRecentQuantity()?.doubleValue(for: heartRateUnit) ?? 0
+    }
+
+    private func computeActiveEnergyBurned(statistics: HKStatistics) -> Double {
+        let energyUnit = HKUnit.kilocalorie()
+        return statistics.sumQuantity()?.doubleValue(for: energyUnit) ?? 0
+    }
+
+    private func computeDistance(statistics: HKStatistics) -> Double {
+        let meterUnit = HKUnit.meter()
+        return round(statistics.sumQuantity()?.doubleValue(for: meterUnit) ?? 0)
+    }
+
+    private func computeSpeed(statistics: HKStatistics) -> Double {
+        let speedUnit = HKUnit.meter().unitDivided(by: .second())
+        let speedInMetersPerSecond = statistics.averageQuantity()?.doubleValue(for: speedUnit) ?? 0
+        return speedInMetersPerSecond * 3.6
     }
 }
