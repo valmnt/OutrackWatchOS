@@ -60,7 +60,7 @@ struct ActivityResultView: View {
                                     numberFormatStyle: .number.precision(.fractionLength(0)))))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .font(.system(.title2, design: .rounded).monospacedDigit().lowercaseSmallCaps())
+                .font(.system(size: 25).monospacedDigit().lowercaseSmallCaps())
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .scenePadding()
 
