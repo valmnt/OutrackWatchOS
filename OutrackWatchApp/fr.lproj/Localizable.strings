@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  Outrack
+
+  Created by Valentin Mont on 03/09/2023.
+  
+*/
+
+// Menu
+"workouts" = "Exercices";
+
+// Controls
+"start" = "Démarrer";
+"pause" = "Pause";
+"resume" = "Continuer";
+"end" = "Fin";
+
+// Sports
+"bike" = "Vélo";
+"run" = "Course";
+"fitness" = "Musculation";
+
+// Result
+"result" = "Resultats";
+"finish" = "Terminer";

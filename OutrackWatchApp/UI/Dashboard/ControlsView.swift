@@ -31,7 +31,7 @@ struct ControlsView: View {
                             }
                             .tint(.red)
                             .font(.title2)
-                            Text("End")
+                            Text(R.string.localizable.end)
                         }
                         VStack {
                             Button {
@@ -41,7 +41,7 @@ struct ControlsView: View {
                             }
                             .tint(.yellow)
                             .font(.title2)
-                            Text(workoutManager.running ? "Pause" : "Resume")
+                            Text(workoutManager.running ? R.string.localizable.pause : R.string.localizable.resume)
                         }
                     }
                 }
@@ -54,8 +54,8 @@ struct ControlsView: View {
                     }
                     .font(.title2)
                     .frame(width: 120)
-                    .tint(Color(Color.primary))
-                    Text("Start")
+                    .tint(Color(R.color.orange))
+                    Text(R.string.localizable.start)
                 }
             }
         }

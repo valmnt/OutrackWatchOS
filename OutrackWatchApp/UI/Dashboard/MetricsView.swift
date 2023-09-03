@@ -19,7 +19,7 @@ struct MetricsView: View {
                 VStack {
                     Text(workoutManager.builder?.elapsedTime.formatElapsedTime() ?? "00:00:00")
                     .fontWeight(.semibold)
-                    .foregroundColor(Color(Color.primary))
+                    .foregroundColor(Color(R.color.orange))
 
                     Divider()
 

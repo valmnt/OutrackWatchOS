@@ -24,7 +24,7 @@ struct SportListView: View {
             .environmentObject(workoutManager)
         }
         .listStyle(.carousel)
-        .navigationBarTitle("Workouts")
+        .navigationBarTitle(R.string.localizable.workouts.callAsFunction())
         .onAppear {
             workoutManager.requestAuthorization()
         }

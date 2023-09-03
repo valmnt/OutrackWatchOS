@@ -22,8 +22,8 @@ struct ActivityResultView: View {
     var body: some View {
         ScrollView {
             VStack {
-                Text("Result")
-                    .foregroundColor(Color(Color.primary))
+                Text(R.string.localizable.result)
+                    .foregroundColor(Color(R.color.orange))
                     .fontWeight(.semibold)
                     .font(.system(.title2, design: .rounded).monospacedDigit().lowercaseSmallCaps())
 
@@ -64,7 +64,7 @@ struct ActivityResultView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .scenePadding()
 
-                Button("Done") {
+                Button(R.string.localizable.finish.callAsFunction()) {
                     resetCallback?()
                     dismiss()
                 }

@@ -42,7 +42,7 @@ struct ActivityView: View {
             }
         } else {
             ProgressView()
-            .progressViewStyle(CircularProgressViewStyle(tint: Color(Color.primary)))
+            .progressViewStyle(CircularProgressViewStyle(tint: Color(R.color.orange)))
             .navigationBarBackButtonHidden()
         }
     }

@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F7D991767419733FAEC0CD4 /* libPods-OutrackWatchApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D22B8CABF80233003A499110 /* libPods-OutrackWatchApp.a */; };
+		C92B81062AA4B83600059C24 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92B81052AA4B83600059C24 /* R.generated.swift */; };
 		C931DD0C2A311BE400D08384 /* SportListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C931DD052A311BE400D08384 /* SportListView.swift */; };
 		C931DD0D2A311BE400D08384 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C931DD062A311BE400D08384 /* Assets.xcassets */; };
 		C931DD0E2A311BE400D08384 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C931DD0A2A311BE400D08384 /* Preview Assets.xcassets */; };
 		C931DD0F2A311BE400D08384 /* OutrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C931DD0B2A311BE400D08384 /* OutrackApp.swift */; };
-		C931DD112A311BFE00D08384 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C931DD102A311BFE00D08384 /* Color+Extension.swift */; };
+		C956DCF62AA4AD650089DEEE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C956DCF82AA4AD650089DEEE /* Localizable.strings */; };
 		C963748E2AA1F815005895E6 /* HKStatistics+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963748D2AA1F815005895E6 /* HKStatistics+Extension.swift */; };
 		C96374902AA216DE005895E6 /* TimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963748F2AA216DE005895E6 /* TimeInterval+Extension.swift */; };
 		C9BCCA3D2A9D37CD002D77E5 /* HKWorkoutActivityType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BCCA3C2A9D37CD002D77E5 /* HKWorkoutActivityType+Extension.swift */; };
@@ -25,18 +27,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18A0143045A5CDD9379806F3 /* Pods-OutrackWatchApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OutrackWatchApp.release.xcconfig"; path = "Target Support Files/Pods-OutrackWatchApp/Pods-OutrackWatchApp.release.xcconfig"; sourceTree = "<group>"; };
+		C0F6487FC47A420FBE03FF21 /* Pods-OutrackWatchApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OutrackWatchApp.debug.xcconfig"; path = "Target Support Files/Pods-OutrackWatchApp/Pods-OutrackWatchApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C91DCED82A289CE10077FC02 /* OutrackWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutrackWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91DCEF02A289E8D0077FC02 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS9.4.sdk/System/Library/Frameworks/CoreBluetooth.framework; sourceTree = DEVELOPER_DIR; };
+		C92B81052AA4B83600059C24 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		C931DD052A311BE400D08384 /* SportListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportListView.swift; sourceTree = "<group>"; };
 		C931DD062A311BE400D08384 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C931DD0A2A311BE400D08384 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C931DD0B2A311BE400D08384 /* OutrackApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutrackApp.swift; sourceTree = "<group>"; };
-		C931DD102A311BFE00D08384 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		C956DCF92AA4AD7E0089DEEE /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C956DCFE2AA4B0F00089DEEE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C963748D2AA1F815005895E6 /* HKStatistics+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HKStatistics+Extension.swift"; sourceTree = "<group>"; };
 		C963748F2AA216DE005895E6 /* TimeInterval+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extension.swift"; sourceTree = "<group>"; };
 		C9BCCA3C2A9D37CD002D77E5 /* HKWorkoutActivityType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HKWorkoutActivityType+Extension.swift"; sourceTree = "<group>"; };
 		C9BCCA3E2A9D3801002D77E5 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		C9BCCA412A9D3861002D77E5 /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
+		D22B8CABF80233003A499110 /* libPods-OutrackWatchApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OutrackWatchApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D713ACB42A9DE52E008BF7BC /* ControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
 		D713ACB62A9DE543008BF7BC /* MetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsView.swift; sourceTree = "<group>"; };
 		D713ACB82A9DE556008BF7BC /* StepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
@@ -50,18 +57,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F7D991767419733FAEC0CD4 /* libPods-OutrackWatchApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C03D9E2CD8DCED1FA31A760 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C0F6487FC47A420FBE03FF21 /* Pods-OutrackWatchApp.debug.xcconfig */,
+				18A0143045A5CDD9379806F3 /* Pods-OutrackWatchApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C91DCECB2A289CE10077FC02 = {
 			isa = PBXGroup;
 			children = (
 				C931DD022A311BE400D08384 /* OutrackWatchApp */,
 				C91DCED32A289CE10077FC02 /* Products */,
 				C91DCEEF2A289E8D0077FC02 /* Frameworks */,
+				1C03D9E2CD8DCED1FA31A760 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				C91DCEF02A289E8D0077FC02 /* CoreBluetooth.framework */,
+				D22B8CABF80233003A499110 /* libPods-OutrackWatchApp.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -90,6 +109,8 @@
 				C931DD092A311BE400D08384 /* Preview Content */,
 				C931DD0B2A311BE400D08384 /* OutrackApp.swift */,
 				C931DD062A311BE400D08384 /* Assets.xcassets */,
+				C92B81052AA4B83600059C24 /* R.generated.swift */,
+				C956DCF82AA4AD650089DEEE /* Localizable.strings */,
 			);
 			path = OutrackWatchApp;
 			sourceTree = "<group>";
@@ -117,7 +138,6 @@
 		C931DD082A311BE400D08384 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C931DD102A311BFE00D08384 /* Color+Extension.swift */,
 				C9BCCA3C2A9D37CD002D77E5 /* HKWorkoutActivityType+Extension.swift */,
 				C963748D2AA1F815005895E6 /* HKStatistics+Extension.swift */,
 				C963748F2AA216DE005895E6 /* TimeInterval+Extension.swift */,
@@ -167,10 +187,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C91DCEE82A289CE20077FC02 /* Build configuration list for PBXNativeTarget "OutrackWatchApp" */;
 			buildPhases = (
+				C956DCF32AA4ABB60089DEEE /* Run Script (RSwift) */,
+				C948B2512A3269A10050E49F /* Run Script (SwiftLint) */,
+				711EBF3D1C09B74DF1B6B3FE /* [CP] Check Pods Manifest.lock */,
 				C91DCED42A289CE10077FC02 /* Sources */,
 				C91DCED52A289CE10077FC02 /* Frameworks */,
 				C91DCED62A289CE10077FC02 /* Resources */,
-				C948B2512A3269A10050E49F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -203,6 +225,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = C91DCECB2A289CE10077FC02;
 			productRefGroup = C91DCED32A289CE10077FC02 /* Products */;
@@ -220,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C931DD0E2A311BE400D08384 /* Preview Assets.xcassets in Resources */,
+				C956DCF62AA4AD650089DEEE /* Localizable.strings in Resources */,
 				C931DD0D2A311BE400D08384 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,7 +251,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C948B2512A3269A10050E49F /* ShellScript */ = {
+		711EBF3D1C09B74DF1B6B3FE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OutrackWatchApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C948B2512A3269A10050E49F /* Run Script (SwiftLint) */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -237,6 +283,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Run Script (SwiftLint)";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -244,6 +291,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		C956DCF32AA4ABB60089DEEE /* Run Script (RSwift) */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script (RSwift)";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -253,12 +320,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D713ACB92A9DE556008BF7BC /* StepsView.swift in Sources */,
+				C92B81062AA4B83600059C24 /* R.generated.swift in Sources */,
 				C963748E2AA1F815005895E6 /* HKStatistics+Extension.swift in Sources */,
 				D713ACB52A9DE52E008BF7BC /* ControlsView.swift in Sources */,
 				C931DD0C2A311BE400D08384 /* SportListView.swift in Sources */,
 				C9BCCA3F2A9D3801002D77E5 /* ActivityView.swift in Sources */,
 				C9BCCA3D2A9D37CD002D77E5 /* HKWorkoutActivityType+Extension.swift in Sources */,
-				C931DD112A311BFE00D08384 /* Color+Extension.swift in Sources */,
 				C931DD0F2A311BE400D08384 /* OutrackApp.swift in Sources */,
 				D713ACB72A9DE543008BF7BC /* MetricsView.swift in Sources */,
 				D74E92A62A9F8A79003F502A /* ResultViewModel.swift in Sources */,
@@ -270,11 +337,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		C956DCF82AA4AD650089DEEE /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C956DCF92AA4AD7E0089DEEE /* fr */,
+				C956DCFE2AA4B0F00089DEEE /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		C91DCEE62A289CE20077FC02 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -333,6 +413,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -382,6 +463,7 @@
 		};
 		C91DCEE92A289CE20077FC02 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0F6487FC47A420FBE03FF21 /* Pods-OutrackWatchApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -419,6 +501,7 @@
 		};
 		C91DCEEA2A289CE20077FC02 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18A0143045A5CDD9379806F3 /* Pods-OutrackWatchApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

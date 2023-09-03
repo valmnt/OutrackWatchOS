@@ -16,11 +16,11 @@ extension HKWorkoutActivityType: Identifiable {
     var name: String {
         switch self {
         case .running:
-            return "Run"
+            return R.string.localizable.run.callAsFunction()
         case .cycling:
-            return "Bike"
+            return R.string.localizable.bike.callAsFunction()
         case .crossTraining:
-            return "Fitness"
+            return R.string.localizable.fitness.callAsFunction()
         default:
             return ""
         }
