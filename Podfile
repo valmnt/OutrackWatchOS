@@ -4,3 +4,7 @@
 target 'OutrackWatchApp' do
   pod 'R.swift'
 end
+
+target 'OutrackWatchAppTests' do
+  pod 'R.swift'
+end

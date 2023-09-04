@@ -21,11 +21,11 @@ class WorkoutManager: NSObject, ObservableObject {
     private let healthStore = HKHealthStore()
 
     var builder: HKLiveWorkoutBuilder?
-    private var session: HKWorkoutSession?
+    var session: HKWorkoutSession?
     var selectedWorkoutActivity: HKWorkoutActivityType?
 
     // MARK: - Callbacks
-    private var endCallback: (() -> Void)?
+    var endCallback: (() -> Void)?
 
     // MARK: - ActivtiData
     @Published var activityData: [HKQuantityTypeIdentifier: Double] = [:]
@@ -52,7 +52,7 @@ class WorkoutManager: NSObject, ObservableObject {
         }
     }
 
-    func startWorkout() {
+    func startWorkout(callback: (() -> Void)? = nil) {
         guard let activityType = selectedWorkoutActivity,
               let locationType = activityType.locationType else { return }
 
@@ -79,6 +79,7 @@ class WorkoutManager: NSObject, ObservableObject {
             DispatchQueue.main.async {
                 self.started = true
                 self.running = true
+                callback?()
             }
         }
     }
@@ -156,27 +157,28 @@ extension WorkoutManager: HKLiveWorkoutBuilderDelegate {
         }
     }
 
-    func updateStatistics(_ statistics: HKStatistics) {
+    func updateStatistics(_ statistics: HKStatisticsProtocol, callback: (() -> Void)? = nil) {
         DispatchQueue.main.async {
-            switch statistics.quantityType {
+            switch statistics.type {
             case HKQuantityType.quantityType(forIdentifier: .heartRate):
-                self.activityData[HKQuantityTypeIdentifier.heartRate] =
+                self.activityData[.heartRate] =
                 statistics.mostRecentHearthRate()
             case HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned):
-                self.activityData[HKQuantityTypeIdentifier.activeEnergyBurned] =
+                self.activityData[.activeEnergyBurned] =
                 statistics.sumActiveEnergyBurned()
             case HKQuantityType.quantityType(forIdentifier: .distanceCycling):
-                self.activityData[HKQuantityTypeIdentifier.distanceCycling] =
+                self.activityData[.distanceCycling] =
                 statistics.sumDistance()
             case HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning):
-                self.activityData[HKQuantityTypeIdentifier.distanceWalkingRunning] =
+                self.activityData[.distanceWalkingRunning] =
                 statistics.sumDistance()
             case HKQuantityType.quantityType(forIdentifier: .runningSpeed):
-                self.activityData[HKQuantityTypeIdentifier.runningSpeed] =
+                self.activityData[.runningSpeed] =
                 statistics.averageRunningSpeed()
             default:
                 return
             }
+            callback?()
         }
     }
 }

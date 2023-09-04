@@ -8,7 +8,19 @@
 import Foundation
 import HealthKit
 
-extension HKStatistics {
+protocol HKStatisticsProtocol: AnyObject {
+    var type: HKQuantityType { get }
+    func mostRecentHearthRate() -> Double
+    func sumActiveEnergyBurned() -> Double
+    func sumDistance() -> Double
+    func averageRunningSpeed() -> Double
+}
+
+extension HKStatistics: HKStatisticsProtocol {
+    var type: HKQuantityType {
+        return quantityType
+    }
+
     func mostRecentHearthRate() -> Double {
         let heartRateUnit = HKUnit.count().unitDivided(by: HKUnit.minute())
         return self.mostRecentQuantity()?.doubleValue(for: heartRateUnit) ?? 0
