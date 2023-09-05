@@ -38,9 +38,9 @@ struct ActivityResultView: View {
                             viewModel.workout?.workoutActivityType == .running
                             ? .distanceWalkingRunning
                             : .distanceCycling
-                        ] ?? 0,
-                                         unit: UnitLength.meters).formatted(.measurement(width: .abbreviated,
-                                                                                         usage: .asProvided)))
+                        ] ?? 0, unit: UnitLength.kilometers)
+                            .formatted(.measurement(width: .abbreviated, usage: .asProvided,
+                                                    numberFormatStyle: .number.precision(.fractionLength(2)))))
                         .frame(maxWidth: .infinity, alignment: .leading)
 
                         if viewModel.workout?.workoutActivityType == .running {
