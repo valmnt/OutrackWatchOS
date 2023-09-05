@@ -64,7 +64,7 @@ struct ActivityResultView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .scenePadding()
 
-                Button(R.string.localizable.finish.callAsFunction()) {
+                Button(R.string.localizable.done.callAsFunction()) {
                     resetCallback?()
                     dismiss()
                 }
