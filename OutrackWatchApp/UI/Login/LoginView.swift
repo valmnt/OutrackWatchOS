@@ -28,10 +28,12 @@ struct LoginView: View {
             Button(R.string.localizable.signin.callAsFunction()) {
                 Task {
                     await viewModel.signIn(email: email, password: password)
-                    path.append(Routes.mainView)
+                    if viewModel.isSignedIn {
+                        path.append(Routes.mainView)
+                    }
                 }
             }
-        }.alert(isPresented: .constant(viewModel.displayAlert)) {
+        }.alert(isPresented: $viewModel.displayAlert) {
             Alert(
                 title: Text(R.string.localizable.error),
                 message: Text(R.string.localizable.loginErrorText),
