@@ -31,7 +31,7 @@ struct ActivityResultView: View {
 
                 VStack {
                     Text(viewModel.duration?.formatElapsedTime() ?? "00:00:00")
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
 
                     if viewModel.workout?.workoutActivityType.locationType == .outdoor {
                         Text(Measurement(value: viewModel.statistics[
@@ -45,19 +45,19 @@ struct ActivityResultView: View {
 
                         if viewModel.workout?.workoutActivityType == .running {
                             Text((viewModel.statistics[.runningSpeed] ?? 0)
-                            .formatted(.number.precision(.fractionLength(0))) + " km/h")
+                                .formatted(.number.precision(.fractionLength(0))) + " km/h")
                             .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     }
 
                     Text((viewModel.statistics[.heartRate] ?? 0)
-                    .formatted(.number.precision(.fractionLength(0))) + " bpm")
+                        .formatted(.number.precision(.fractionLength(0))) + " bpm")
                     .frame(maxWidth: .infinity, alignment: .leading)
 
                     Text(Measurement(value: viewModel.statistics[.activeEnergyBurned] ?? 0,
                                      unit: UnitEnergy.kilocalories)
                         .formatted(.measurement(width: .abbreviated, usage: .workout,
-                                    numberFormatStyle: .number.precision(.fractionLength(0)))))
+                                                numberFormatStyle: .number.precision(.fractionLength(0)))))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .font(.system(size: 25).monospacedDigit().lowercaseSmallCaps())

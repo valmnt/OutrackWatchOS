@@ -18,8 +18,8 @@ struct MetricsView: View {
                                                  isPaused: !workoutManager.running)) { _ in
                 VStack {
                     Text(workoutManager.builder?.elapsedTime.formatElapsedTime() ?? "00:00:00")
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color(R.color.orange))
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color(R.color.orange))
 
                     Divider()
 
@@ -35,19 +35,19 @@ struct MetricsView: View {
 
                         if workoutManager.selectedWorkoutActivity == .running {
                             Text((workoutManager.activityData[.runningSpeed] ?? 0)
-                            .formatted(.number.precision(.fractionLength(0))) + " km/h")
+                                .formatted(.number.precision(.fractionLength(0))) + " km/h")
                             .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     }
 
                     Text((workoutManager.activityData[.heartRate] ?? 0)
-                    .formatted(.number.precision(.fractionLength(0))) + " bpm")
+                        .formatted(.number.precision(.fractionLength(0))) + " bpm")
                     .frame(maxWidth: .infinity, alignment: .leading)
 
                     Text(Measurement(value: workoutManager.activityData[.activeEnergyBurned] ?? 0,
                                      unit: UnitEnergy.kilocalories)
                         .formatted(.measurement(width: .abbreviated, usage: .workout,
-                                    numberFormatStyle: .number.precision(.fractionLength(0)))))
+                                                numberFormatStyle: .number.precision(.fractionLength(0)))))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .font(.system(size: 25).monospacedDigit().lowercaseSmallCaps())

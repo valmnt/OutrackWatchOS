@@ -30,11 +30,11 @@ struct SportListView: View {
         }
         .sheet(isPresented: $workoutManager.ended) {
             ActivityResultView(workout: workoutManager.workout, resetCallback: workoutManager.reset)
-            .toolbar(content: {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("") {}
-                }
-            })
+                .toolbar(content: {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("") {}
+                    }
+                })
         }
     }
 }

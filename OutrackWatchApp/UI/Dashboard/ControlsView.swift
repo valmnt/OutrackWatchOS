@@ -15,48 +15,44 @@ struct ControlsView: View {
     var progressionViewCallback: (() -> Void)?
 
     var body: some View {
-        HStack {
-            if workoutManager.started {
-                ZStack {
-                    HStack {
-                        VStack {
-                            Button {
-                                workoutManager.end(waitingCallback: {
-                                    progressionViewCallback?()
-                                }, endCallback: {
-                                    dismiss()
-                                })
-                            } label: {
-                                Image(systemName: "xmark")
-                            }
-                            .tint(.red)
-                            .font(.title2)
-                            Text(R.string.localizable.end)
-                        }
-                        VStack {
-                            Button {
-                                workoutManager.togglePause()
-                            } label: {
-                                Image(systemName: workoutManager.running ? "pause" : "play")
-                            }
-                            .tint(.yellow)
-                            .font(.title2)
-                            Text(workoutManager.running ? R.string.localizable.pause : R.string.localizable.resume)
-                        }
-                    }
-                }
-            } else {
+        if workoutManager.started {
+            HStack {
                 VStack {
                     Button {
-                        workoutManager.startWorkout()
+                        workoutManager.end(waitingCallback: {
+                            progressionViewCallback?()
+                        }, endCallback: {
+                            dismiss()
+                        })
                     } label: {
-                        Image(systemName: "play")
+                        Image(systemName: "xmark")
                     }
+                    .tint(.red)
                     .font(.title2)
-                    .frame(width: 120)
-                    .tint(Color(R.color.orange))
-                    Text(R.string.localizable.start)
+                    Text(R.string.localizable.end)
                 }
+                VStack {
+                    Button {
+                        workoutManager.togglePause()
+                    } label: {
+                        Image(systemName: workoutManager.running ? "pause" : "play")
+                    }
+                    .tint(.yellow)
+                    .font(.title2)
+                    Text(workoutManager.running ? R.string.localizable.pause : R.string.localizable.resume)
+                }
+            }
+        } else {
+            VStack {
+                Button {
+                    workoutManager.startWorkout()
+                } label: {
+                    Image(systemName: "play")
+                }
+                .font(.title2)
+                .frame(width: 120)
+                .tint(Color(R.color.orange))
+                Text(R.string.localizable.start)
             }
         }
     }

@@ -11,7 +11,6 @@ import HealthKit
 struct ActivityView: View {
 
     @EnvironmentObject var workoutManager: WorkoutManager
-
     @State private var selection: Tab = .controls
     @State private var displayProgressionView: Bool = false
 
@@ -33,8 +32,8 @@ struct ActivityView: View {
             }
         } else {
             ProgressView()
-            .progressViewStyle(CircularProgressViewStyle(tint: Color(R.color.orange)))
-            .navigationBarBackButtonHidden()
+                .progressViewStyle(CircularProgressViewStyle(tint: Color(R.color.orange)))
+                .navigationBarBackButtonHidden()
         }
     }
 }
