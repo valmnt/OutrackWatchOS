@@ -9,7 +9,7 @@ import Foundation
 
 class LoginViewModel: ObservableObject {
 
-    @Published var displayAlert: Bool = false
+    @Published var displayError: Bool = false
     @Published var isSignedIn: Bool = false
 
     private let service: LoginService = LoginService()
@@ -21,7 +21,7 @@ class LoginViewModel: ObservableObject {
             UserDefaults.standard.set(token, forKey: "token")
             isSignedIn = true
         } else {
-            displayAlert = true
+            displayError = true
         }
     }
 }

@@ -16,6 +16,7 @@ struct LoginView: View {
 
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var displayInitWarning: Bool = false
 
     var body: some View {
         VStack {
@@ -33,18 +34,30 @@ struct LoginView: View {
                     }
                 }
             }
-        }.alert(isPresented: $viewModel.displayAlert) {
-            Alert(
-                title: Text(R.string.localizable.error),
-                message: Text(R.string.localizable.loginErrorText),
+        }.alert(isPresented: .constant(viewModel.displayError || displayInitWarning)) {
+            let title = displayInitWarning ? R.string.localizable.initWarningTitle
+            : R.string.localizable.error
+            let message = displayInitWarning ? R.string.localizable.initWarningText
+            : R.string.localizable.loginErrorText
+
+            return Alert(
+                title: Text(title),
+                message: Text(message),
                 dismissButton: .default(Text("OK")) {
-                    viewModel.displayAlert = false
+                    if displayInitWarning {
+                        displayInitWarning = false
+                    } else {
+                        viewModel.displayError = false
+                    }
                 }
             )
         }
         .onAppear {
             if UserDefaults.standard.value(forKey: "token") != nil {
                 path.append(Routes.mainView)
+            } else if UserDefaults.standard.value(forKey: "init") == nil {
+                UserDefaults.standard.set(true, forKey: "init")
+                displayInitWarning = true
             }
         }
     }

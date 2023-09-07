@@ -36,3 +36,7 @@
 // Account
 "account" = "Compte";
 "signout" = "Se déconnecter";
+
+// Init warning
+"initWarningTitle" = "Attention";
+"initWarningText" = "Pour profiter pleinement de toutes les fonctionnalités de notre application watchOS, veuillez télécharger et utiliser notre app iOS.";
