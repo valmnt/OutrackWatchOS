@@ -11,7 +11,7 @@ import HealthKit
 
 final class WorkoutManagerTests: XCTestCase {
 
-    func testStartWorkout() {
+    func test_start_workout() {
         setupWorkoutManager(.running)
         startWorkout {
             XCTAssertTrue(self.workoutManager.started)
@@ -19,7 +19,7 @@ final class WorkoutManagerTests: XCTestCase {
         }
     }
 
-    func testEndWorkout() {
+    func test_end_workout() {
         setupWorkoutManager(.running)
         let expectation = XCTestExpectation(description: "Workout Ended")
         startWorkout {
@@ -33,7 +33,7 @@ final class WorkoutManagerTests: XCTestCase {
         wait(for: [expectation], timeout: 5)
     }
 
-    func testTogglePause() {
+    func test_toggle_pause() {
         setupWorkoutManager(.running)
         startWorkout {
             self.workoutManager.togglePause()
@@ -43,7 +43,7 @@ final class WorkoutManagerTests: XCTestCase {
         }
     }
 
-    func testReset() {
+    func test_reset() {
         setupWorkoutManager(.running)
         startWorkout {
             self.workoutManager.reset()
@@ -57,7 +57,7 @@ final class WorkoutManagerTests: XCTestCase {
         }
     }
 
-    func testUpdateStatistics() {
+    func test_update_statistics() {
         setupWorkoutManager(.running)
         updateStatistics(allStatisticsExpected: [
             .heartRate: 110,

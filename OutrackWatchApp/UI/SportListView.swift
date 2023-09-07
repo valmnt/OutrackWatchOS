@@ -11,17 +11,17 @@ import HealthKit
 struct SportListView: View {
 
     @EnvironmentObject var workoutManager: WorkoutManager
+    @Binding var path: NavigationPath
 
     var workoutTypes: [HKWorkoutActivityType] = [.cycling, .running, .crossTraining]
 
     var body: some View {
         List(workoutTypes) { workoutType in
-            NavigationLink(workoutType.name, value: workoutType)
+            Button(workoutType.name) {
+                workoutManager.selectedWorkoutActivity = workoutType
+                path.append(Routes.activityView)
+            }
             .padding(EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5))
-        }
-        .navigationDestination(for: HKWorkoutActivityType.self) { workoutType in
-            ActivityView(selectedWorkoutActivity: workoutType)
-            .environmentObject(workoutManager)
         }
         .listStyle(.carousel)
         .navigationBarTitle(R.string.localizable.workouts.callAsFunction())
@@ -41,6 +41,6 @@ struct SportListView: View {
 
 struct SportList_Previews: PreviewProvider {
     static var previews: some View {
-        SportListView()
+        SportListView(path: .constant(.init()))
     }
 }

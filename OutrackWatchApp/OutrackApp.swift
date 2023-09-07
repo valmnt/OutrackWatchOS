@@ -11,13 +11,29 @@ import SwiftUI
 struct OutrackApp: App {
 
     @StateObject private var workoutManager = WorkoutManager()
+    @State private var path = NavigationPath()
 
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                SportListView()
-                .environmentObject(workoutManager)
+            NavigationStack(path: $path) {
+                LoginView(path: $path)
+                    .environmentObject(workoutManager)
+                    .navigationDestination(for: Routes.self) { route in
+                        switch route {
+                        case .mainView:
+                            MainView(path: $path)
+                                .environmentObject(workoutManager)
+                        case .activityView:
+                            ActivityView()
+                                .environmentObject(workoutManager)
+                        }
+                    }
             }
         }
     }
+}
+
+enum Routes {
+    case mainView
+    case activityView
 }
