@@ -17,20 +17,30 @@ struct LoginView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var displayInitWarning: Bool = false
+    @State private var displayProgressView: Bool = false
 
     var body: some View {
         VStack {
-            TextField(R.string.localizable.email.callAsFunction(), text: $email)
-                .textContentType(.username)
-                .multilineTextAlignment(.center)
-            SecureField(R.string.localizable.password.callAsFunction(), text: $password)
-                .textContentType(.password)
-                .multilineTextAlignment(.center)
-            Button(R.string.localizable.signin.callAsFunction()) {
-                Task {
-                    await viewModel.signIn(email: email, password: password)
-                    if viewModel.isSignedIn {
-                        path.append(Routes.mainView)
+            if displayProgressView {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: Color(R.color.orange)))
+            } else {
+                TextField(R.string.localizable.email.callAsFunction(), text: $email)
+                    .textContentType(.username)
+                    .multilineTextAlignment(.center)
+                SecureField(R.string.localizable.password.callAsFunction(), text: $password)
+                    .textContentType(.password)
+                    .multilineTextAlignment(.center)
+                Button(R.string.localizable.signin.callAsFunction()) {
+                    Task {
+                        displayProgressView = true
+                        await viewModel.signIn(email: email, password: password)
+                        if viewModel.isSignedIn {
+                            self.path.append(Routes.mainView)
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            displayProgressView = false
+                        }
                     }
                 }
             }
