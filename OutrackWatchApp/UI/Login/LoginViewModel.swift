@@ -27,6 +27,6 @@ class LoginViewModel: ObservableObject {
 }
 
 private struct LoginDTO: Encodable {
-    var email: String
-    var password: String
+    let email: String
+    let password: String
 }

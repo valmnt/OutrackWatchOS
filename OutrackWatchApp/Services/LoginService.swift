@@ -8,7 +8,7 @@
 import Foundation
 
 class LoginService: HTTPPostService {
-    var url: String = NetworkConstants.baseUrl + NetworkConstants.Auth.login
+    let url: String = NetworkConstants.baseUrl + NetworkConstants.Auth.login
 
     var queryParameters: [String: String] = [:]
     var headers: [String: String] = [:]
@@ -20,9 +20,9 @@ class LoginService: HTTPPostService {
 }
 
 struct LoginResponse: Decodable {
-    var message: LoginData
+    let message: LoginData
 }
 
 struct LoginData: Decodable {
-    var token: String
+    let token: String
 }
