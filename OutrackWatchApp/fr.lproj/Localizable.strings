@@ -6,6 +6,9 @@
   
 */
 
+// General
+"error" = "Error";
+
 // Menu
 "workouts" = "Exercices";
 
@@ -23,3 +26,13 @@
 // Result
 "result" = "Resultats";
 "done" = "Terminer";
+
+// Login
+"email" = "Adresse mail";
+"password" = "Mot de passe";
+"signin" = "Se connecter";
+"loginErrorText" = "Une erreur survenue lors de la connexion. Veuillez réessayer.";
+
+// Account
+"account" = "Compte";
+"signout" = "Se déconnecter";

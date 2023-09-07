@@ -15,12 +15,6 @@ struct ActivityView: View {
     @State private var selection: Tab = .controls
     @State private var displayProgressionView: Bool = false
 
-    private var selectedWorkoutActivity: HKWorkoutActivityType?
-
-    init(selectedWorkoutActivity: HKWorkoutActivityType? = nil) {
-        self.selectedWorkoutActivity = selectedWorkoutActivity
-    }
-
     enum Tab {
         case controls, metrics
     }
@@ -34,11 +28,8 @@ struct ActivityView: View {
                     }.tag(Tab.controls)
                     MetricsView().tag(Tab.metrics)
                 }
-                .navigationTitle(selectedWorkoutActivity?.name ?? "")
+                .navigationTitle(workoutManager.selectedWorkoutActivity?.name ?? "")
                 .navigationBarBackButtonHidden(workoutManager.started)
-                .onAppear {
-                    workoutManager.selectedWorkoutActivity = selectedWorkoutActivity
-                }
             }
         } else {
             ProgressView()

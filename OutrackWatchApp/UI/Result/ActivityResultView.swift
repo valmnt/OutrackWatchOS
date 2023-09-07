@@ -73,12 +73,6 @@ struct ActivityResultView: View {
     }
 }
 
-extension HKQuantityTypeIdentifier: Identifiable {
-    public var id: String {
-        return rawValue
-    }
-}
-
 struct WorkoutResultView_Previews: PreviewProvider {
     static var previews: some View {
         ActivityResultView()
