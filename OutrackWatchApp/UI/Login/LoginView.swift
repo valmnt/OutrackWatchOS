@@ -35,7 +35,7 @@ struct LoginView: View {
                     Task {
                         displayProgressView = true
                         await viewModel.signIn(email: email, password: password)
-                        if viewModel.isSignedIn {
+                        if viewModel.service.task.state == .succeeded {
                             self.path.append(Routes.mainView)
                         }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

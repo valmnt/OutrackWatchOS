@@ -10,16 +10,14 @@ import Foundation
 class LoginViewModel: ObservableObject {
 
     @Published var displayError: Bool = false
-    @Published var isSignedIn: Bool = false
 
-    private let service: LoginService = LoginService()
+    let service: LoginService = LoginService()
 
     @MainActor
     func signIn(email: String, password: String) async {
         await service.proccess(dto: LoginDTO(email: email, password: password))
         if let token = (service.task.response as? LoginResponse)?.message.token {
             UserDefaults.standard.setToken(token)
-            isSignedIn = true
         } else {
             displayError = true
         }
