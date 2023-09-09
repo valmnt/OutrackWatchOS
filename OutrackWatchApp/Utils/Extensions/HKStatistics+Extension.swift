@@ -43,10 +43,10 @@ extension HKStatistics: HKStatisticsProtocol {
     }
 
     func sumDistance() -> Double {
-        let meterUnit = HKUnit.meter()
-        let meters = (self.sumQuantity()?.doubleValue(for: meterUnit) ?? 0) / 1000
-        let formattedMeters = meters.formatted(.number.precision(.fractionLength(2)))
-        return Double(formattedMeters.replaceCommaByPoint()) ?? 0
+        let distanceUnit = HKUnit.meter()
+        let kilometers = (self.sumQuantity()?.doubleValue(for: distanceUnit) ?? 0) / 1000
+        let formattedDistance = kilometers.formatted(.number.precision(.fractionLength(2)))
+        return Double(formattedDistance.replaceCommaByPoint()) ?? 0
     }
 
     func averageRunningSpeed() -> Double {
