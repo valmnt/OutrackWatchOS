@@ -14,10 +14,10 @@ protocol ServiceProtocol {
 
 protocol HTTPGetService: ServiceProtocol {
     var task: HTTPGetTask { get set }
-    func proccess() async
+    func proccess(accessToken: String?) async
 }
 
 protocol HTTPPostService: ServiceProtocol {
     var task: HTTPPostTask { get set }
-    func proccess<E>(dto: E) async where E: Encodable
+    func proccess<E>(dto: E, accessToken: String?) async where E: Encodable
 }

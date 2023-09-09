@@ -13,7 +13,7 @@ struct AccountView: View {
 
     var body: some View {
         Button(action: {
-            UserDefaults.standard.removeObject(forKey: "token")
+            UserDefaults.standard.removeToken()
             path = .init()
         }, label: {
             Text(R.string.localizable.signout)

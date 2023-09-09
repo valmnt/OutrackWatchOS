@@ -23,27 +23,37 @@ extension HKStatistics: HKStatisticsProtocol {
 
     func mostRecentHearthRate() -> Double {
         let heartRateUnit = HKUnit.count().unitDivided(by: HKUnit.minute())
-        return self.mostRecentQuantity()?.doubleValue(for: heartRateUnit) ?? 0
+        let hearthRate = self.mostRecentQuantity()?.doubleValue(for: heartRateUnit) ?? 0
+        let formattedHearthRate = hearthRate.formatted(.number.precision(.fractionLength(0)))
+        return Double(formattedHearthRate.replaceCommaByPoint()) ?? 0
     }
 
     func averageHearthRate() -> Double {
         let heartRateUnit = HKUnit.count().unitDivided(by: HKUnit.minute())
-        return self.averageQuantity()?.doubleValue(for: heartRateUnit) ?? 0
+        let hearthRate = self.averageQuantity()?.doubleValue(for: heartRateUnit) ?? 0
+        let formattedHearthRate = hearthRate.formatted(.number.precision(.fractionLength(0)))
+        return Double(formattedHearthRate.replaceCommaByPoint()) ?? 0
     }
 
     func sumActiveEnergyBurned() -> Double {
         let energyUnit = HKUnit.kilocalorie()
-        return self.sumQuantity()?.doubleValue(for: energyUnit) ?? 0
+        let energyBurned = self.sumQuantity()?.doubleValue(for: energyUnit) ?? 0
+        let formattedEnergyBurned = energyBurned.formatted(.number.precision(.fractionLength(0)))
+        return Double(formattedEnergyBurned.replaceCommaByPoint()) ?? 0
     }
 
     func sumDistance() -> Double {
         let meterUnit = HKUnit.meter()
-        return (self.sumQuantity()?.doubleValue(for: meterUnit) ?? 0) / 1000
+        let meters = (self.sumQuantity()?.doubleValue(for: meterUnit) ?? 0) / 1000
+        let formattedMeters = meters.formatted(.number.precision(.fractionLength(2)))
+        return Double(formattedMeters.replaceCommaByPoint()) ?? 0
     }
 
     func averageRunningSpeed() -> Double {
         let speedUnit = HKUnit.meter().unitDivided(by: .second())
         let speedInMetersPerSecond = self.averageQuantity()?.doubleValue(for: speedUnit) ?? 0
-        return speedInMetersPerSecond * 3.6
+        let speedInKilometersPerHour = speedInMetersPerSecond * 3.6
+        let formattedSpeed = speedInKilometersPerHour.formatted(.number.precision(.fractionLength(1)))
+        return Double(formattedSpeed.replaceCommaByPoint()) ?? 0
     }
 }

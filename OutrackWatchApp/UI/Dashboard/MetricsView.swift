@@ -24,31 +24,24 @@ struct MetricsView: View {
                     Divider()
 
                     if workoutManager.selectedWorkoutActivity?.locationType == .outdoor {
-                        Text(Measurement(value: workoutManager.activityData[
+                        Text(String(format: "%.2f km", workoutManager.activityData[
                             workoutManager.selectedWorkoutActivity == .running
                             ? .distanceWalkingRunning
                             : .distanceCycling
-                        ] ?? 0, unit: UnitLength.kilometers)
-                            .formatted(.measurement(width: .abbreviated, usage: .asProvided,
-                                                    numberFormatStyle: .number.precision(.fractionLength(2)))))
+                        ] ?? 0))
                         .frame(maxWidth: .infinity, alignment: .leading)
 
                         if workoutManager.selectedWorkoutActivity == .running {
-                            Text((workoutManager.activityData[.runningSpeed] ?? 0)
-                                .formatted(.number.precision(.fractionLength(0))) + " km/h")
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            Text(String(format: "%.1f km/h", workoutManager.activityData[.runningSpeed] ?? 0))
+                                .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     }
 
-                    Text((workoutManager.activityData[.heartRate] ?? 0)
-                        .formatted(.number.precision(.fractionLength(0))) + " bpm")
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    Text(String(format: "%0.0f bpm", workoutManager.activityData[.heartRate] ?? 0))
+                        .frame(maxWidth: .infinity, alignment: .leading)
 
-                    Text(Measurement(value: workoutManager.activityData[.activeEnergyBurned] ?? 0,
-                                     unit: UnitEnergy.kilocalories)
-                        .formatted(.measurement(width: .abbreviated, usage: .workout,
-                                                numberFormatStyle: .number.precision(.fractionLength(0)))))
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    Text(String(format: "%.0f kcal", workoutManager.activityData[.activeEnergyBurned] ?? 0))
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .font(.system(size: 25).monospacedDigit().lowercaseSmallCaps())
                 .frame(maxWidth: .infinity, alignment: .leading)
