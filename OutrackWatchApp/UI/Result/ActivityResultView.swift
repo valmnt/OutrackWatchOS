@@ -12,6 +12,8 @@ struct ActivityResultView: View {
 
     @ObservedObject var viewModel: ResultViewModel = ResultViewModel()
     @Environment(\.dismiss) var dismiss
+    @State var displayProgressView: Bool = false
+    @State var displayError: Bool = false
     var resetCallback: (() -> Void)?
 
     init(workout: HKWorkout? = nil, resetCallback: (() -> Void)? = nil) {
@@ -34,40 +36,61 @@ struct ActivityResultView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
 
                     if viewModel.workout?.workoutActivityType.locationType == .outdoor {
-                        Text(Measurement(value: viewModel.statistics[
+                        Text(String(format: "%.2f km", viewModel.statistics[
                             viewModel.workout?.workoutActivityType == .running
                             ? .distanceWalkingRunning
                             : .distanceCycling
-                        ] ?? 0, unit: UnitLength.kilometers)
-                            .formatted(.measurement(width: .abbreviated, usage: .asProvided,
-                                                    numberFormatStyle: .number.precision(.fractionLength(2)))))
+                        ] ?? 0))
                         .frame(maxWidth: .infinity, alignment: .leading)
 
                         if viewModel.workout?.workoutActivityType == .running {
-                            Text((viewModel.statistics[.runningSpeed] ?? 0)
-                                .formatted(.number.precision(.fractionLength(0))) + " km/h")
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            Text(String(format: "%.1f km/h", viewModel.statistics[.runningSpeed] ?? 0))
+                                .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     }
 
-                    Text((viewModel.statistics[.heartRate] ?? 0)
-                        .formatted(.number.precision(.fractionLength(0))) + " bpm")
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    Text(String(format: "%0.0f bpm", viewModel.statistics[.heartRate] ?? 0))
+                        .frame(maxWidth: .infinity, alignment: .leading)
 
-                    Text(Measurement(value: viewModel.statistics[.activeEnergyBurned] ?? 0,
-                                     unit: UnitEnergy.kilocalories)
-                        .formatted(.measurement(width: .abbreviated, usage: .workout,
-                                                numberFormatStyle: .number.precision(.fractionLength(0)))))
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    Text(String(format: "%.0f kcal", viewModel.statistics[.activeEnergyBurned] ?? 0))
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .font(.system(size: 25).monospacedDigit().lowercaseSmallCaps())
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .scenePadding()
 
-                Button(R.string.localizable.done.callAsFunction()) {
-                    resetCallback?()
-                    dismiss()
+                if !displayProgressView {
+                    Button(R.string.localizable.done.callAsFunction()) {
+                        Task {
+                            self.displayProgressView = true
+                            await viewModel.postActivity()
+                            if viewModel.postActivityService.task.state == .succeeded {
+                                resetCallback?()
+                                dismiss()
+                            } else {
+                                displayError = true
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                self.displayProgressView = false
+                            }
+                        }
+                    }
+                } else {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: Color(R.color.orange)))
                 }
+            }
+            .alert(isPresented: $displayError) {
+                Alert(title: Text(R.string.localizable.error),
+                      message: Text(R.string.localizable.postActivityError),
+                      primaryButton: .default(Text(R.string.localizable.no)) {
+                    resetCallback?()
+                    displayError = false
+                    dismiss()
+                },
+                      secondaryButton: .default(Text(R.string.localizable.yes)) {
+                    displayError = false
+                })
             }
         }
     }

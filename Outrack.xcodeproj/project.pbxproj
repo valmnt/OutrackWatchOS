@@ -13,6 +13,7 @@
 		C905917A2AA870E300AB9827 /* FakeURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90591762AA870E300AB9827 /* FakeURLSession.swift */; };
 		C905917B2AA870E300AB9827 /* APICallerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90591772AA870E300AB9827 /* APICallerTests.swift */; };
 		C92B81062AA4B83600059C24 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92B81052AA4B83600059C24 /* R.generated.swift */; };
+		C93195052AAB537200FB2F2C /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93195042AAB537200FB2F2C /* String+Extension.swift */; };
 		C931DD0C2A311BE400D08384 /* SportListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C931DD052A311BE400D08384 /* SportListView.swift */; };
 		C931DD0D2A311BE400D08384 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C931DD062A311BE400D08384 /* Assets.xcassets */; };
 		C931DD0E2A311BE400D08384 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C931DD0A2A311BE400D08384 /* Preview Assets.xcassets */; };
@@ -36,6 +37,8 @@
 		C956DCF62AA4AD650089DEEE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C956DCF82AA4AD650089DEEE /* Localizable.strings */; };
 		C963748E2AA1F815005895E6 /* HKStatistics+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963748D2AA1F815005895E6 /* HKStatistics+Extension.swift */; };
 		C96374902AA216DE005895E6 /* TimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963748F2AA216DE005895E6 /* TimeInterval+Extension.swift */; };
+		C96568832AAA5ACD004B3E36 /* POSTActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96568822AAA5ACD004B3E36 /* POSTActivityService.swift */; };
+		C96568852AAA64F1004B3E36 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96568842AAA64F1004B3E36 /* UserDefaults+Extension.swift */; };
 		C968ECB82AA9B581007E9EDE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968ECB72AA9B581007E9EDE /* MainView.swift */; };
 		C968ECBB2AA9B5B2007E9EDE /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968ECBA2AA9B5B2007E9EDE /* AccountView.swift */; };
 		C9BCCA3D2A9D37CD002D77E5 /* HKWorkoutActivityType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BCCA3C2A9D37CD002D77E5 /* HKWorkoutActivityType+Extension.swift */; };
@@ -73,6 +76,7 @@
 		C91DCED82A289CE10077FC02 /* OutrackWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutrackWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91DCEF02A289E8D0077FC02 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS9.4.sdk/System/Library/Frameworks/CoreBluetooth.framework; sourceTree = DEVELOPER_DIR; };
 		C92B81052AA4B83600059C24 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		C93195042AAB537200FB2F2C /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		C931DD052A311BE400D08384 /* SportListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportListView.swift; sourceTree = "<group>"; };
 		C931DD062A311BE400D08384 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C931DD0A2A311BE400D08384 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -97,6 +101,8 @@
 		C956DCFE2AA4B0F00089DEEE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C963748D2AA1F815005895E6 /* HKStatistics+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HKStatistics+Extension.swift"; sourceTree = "<group>"; };
 		C963748F2AA216DE005895E6 /* TimeInterval+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extension.swift"; sourceTree = "<group>"; };
+		C96568822AAA5ACD004B3E36 /* POSTActivityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POSTActivityService.swift; sourceTree = "<group>"; };
+		C96568842AAA64F1004B3E36 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		C968ECB72AA9B581007E9EDE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C968ECBA2AA9B5B2007E9EDE /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		C9BCCA3C2A9D37CD002D77E5 /* HKWorkoutActivityType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HKWorkoutActivityType+Extension.swift"; sourceTree = "<group>"; };
@@ -240,6 +246,8 @@
 				C9BCCA3C2A9D37CD002D77E5 /* HKWorkoutActivityType+Extension.swift */,
 				C963748D2AA1F815005895E6 /* HKStatistics+Extension.swift */,
 				C963748F2AA216DE005895E6 /* TimeInterval+Extension.swift */,
+				C96568842AAA64F1004B3E36 /* UserDefaults+Extension.swift */,
+				C93195042AAB537200FB2F2C /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -316,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				C94ECC332AA78C55001D4B11 /* LoginService.swift */,
+				C96568822AAA5ACD004B3E36 /* POSTActivityService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -572,12 +581,14 @@
 				D713ACB92A9DE556008BF7BC /* StepsView.swift in Sources */,
 				C94ECC2B2AA78B3F001D4B11 /* HTTPProtocol.swift in Sources */,
 				C94ECC292AA78B3F001D4B11 /* ServiceProtocol.swift in Sources */,
+				C93195052AAB537200FB2F2C /* String+Extension.swift in Sources */,
 				C92B81062AA4B83600059C24 /* R.generated.swift in Sources */,
 				C963748E2AA1F815005895E6 /* HKStatistics+Extension.swift in Sources */,
 				D713ACB52A9DE52E008BF7BC /* ControlsView.swift in Sources */,
 				C931DD0C2A311BE400D08384 /* SportListView.swift in Sources */,
 				C9BCCA3F2A9D3801002D77E5 /* ActivityView.swift in Sources */,
 				C968ECB82AA9B581007E9EDE /* MainView.swift in Sources */,
+				C96568832AAA5ACD004B3E36 /* POSTActivityService.swift in Sources */,
 				C94ECC272AA78B3F001D4B11 /* States.swift in Sources */,
 				C94ECC2A2AA78B3F001D4B11 /* URLSessionProtocol.swift in Sources */,
 				C9BCCA3D2A9D37CD002D77E5 /* HKWorkoutActivityType+Extension.swift in Sources */,
@@ -588,6 +599,7 @@
 				D713ACB72A9DE543008BF7BC /* MetricsView.swift in Sources */,
 				C94ECC242AA78B3F001D4B11 /* HTTPTask.swift in Sources */,
 				D74E92A62A9F8A79003F502A /* ResultViewModel.swift in Sources */,
+				C96568852AAA64F1004B3E36 /* UserDefaults+Extension.swift in Sources */,
 				C9BCCA422A9D3861002D77E5 /* WorkoutManager.swift in Sources */,
 				D713ACBC2A9E0C8E008BF7BC /* ActivityResultView.swift in Sources */,
 				C94ECC2D2AA78B3F001D4B11 /* RequestGenerator.swift in Sources */,

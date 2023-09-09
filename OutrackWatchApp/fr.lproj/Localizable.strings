@@ -8,6 +8,8 @@
 
 // General
 "error" = "Erreur";
+"yes" = "Oui";
+"no" = "Non";
 
 // Menu
 "workouts" = "Exercices";
@@ -40,3 +42,6 @@
 // Init warning
 "initWarningTitle" = "Attention";
 "initWarningText" = "Pour profiter pleinement de toutes les fonctionnalités de notre application watchOS, veuillez télécharger et utiliser notre app iOS.";
+
+// Activity
+"postActivityError" = "Une erreur est survenue lors de la sauvegarde. Souhaitez-vous réessayer ?\n\n Si vous cliquez sur 'non' vos données seront perdues.";

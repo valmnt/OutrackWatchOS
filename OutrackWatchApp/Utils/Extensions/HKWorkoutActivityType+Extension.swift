@@ -26,6 +26,19 @@ extension HKWorkoutActivityType: Identifiable {
         }
     }
 
+    var APIidentifier: String {
+        switch self {
+        case .running:
+            return "COURSE"
+        case .cycling:
+            return "CYCLISME"
+        case .crossTraining:
+            return "MUSCULATION"
+        default:
+            return ""
+        }
+    }
+
     var locationType: HKWorkoutSessionLocationType? {
         switch self {
         case .running:

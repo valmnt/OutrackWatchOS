@@ -26,6 +26,10 @@ class HTTPTask: DefaultHTTPTask {
         self.response = response
     }
 
+    func didSuccess() {
+        state = .succeeded
+    }
+
     func didFail(error: Error) {
         state = .failed
         self.error = error

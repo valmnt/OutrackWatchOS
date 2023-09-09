@@ -14,8 +14,8 @@ struct LoginView: View {
     @ObservedObject var viewModel: LoginViewModel = LoginViewModel()
     @Binding var path: NavigationPath
 
-    @State private var email: String = ""
-    @State private var password: String = ""
+    @State private var email: String = "premier.test@gmail.com"
+    @State private var password: String = "123"
     @State private var displayInitWarning: Bool = false
     @State private var displayProgressView: Bool = false
 
@@ -63,10 +63,10 @@ struct LoginView: View {
             )
         }
         .onAppear {
-            if UserDefaults.standard.value(forKey: "token") != nil {
+            if UserDefaults.standard.token != nil {
                 path.append(Routes.mainView)
-            } else if UserDefaults.standard.value(forKey: "init") == nil {
-                UserDefaults.standard.set(true, forKey: "init")
+            } else if UserDefaults.standard.firstLaunch == nil {
+                UserDefaults.standard.setFirstLaunch()
                 displayInitWarning = true
             }
         }

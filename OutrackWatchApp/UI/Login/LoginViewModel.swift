@@ -18,7 +18,7 @@ class LoginViewModel: ObservableObject {
     func signIn(email: String, password: String) async {
         await service.proccess(dto: LoginDTO(email: email, password: password))
         if let token = (service.task.response as? LoginResponse)?.message.token {
-            UserDefaults.standard.set(token, forKey: "token")
+            UserDefaults.standard.setToken(token)
             isSignedIn = true
         } else {
             displayError = true

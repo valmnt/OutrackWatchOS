@@ -16,7 +16,11 @@ struct NetworkConstants {
     private static let version = "/v1"
 
     struct Auth {
-        private static let prefix = "/auth"
-        static let login = prefix + "/signin"
+        private static let path = "/auth"
+        static let login = path + "/signin"
+    }
+
+    struct Activity {
+        static let path = "/activity"
     }
 }
