@@ -64,7 +64,8 @@ struct ActivityResultView: View {
                         Task {
                             self.displayProgressView = true
                             await viewModel.postActivity()
-                            if viewModel.postActivityService.task.state == .succeeded {
+                            if viewModel.postActivityService.task.state == .succeeded ||
+                                viewModel.postActivityService.task.state == .free {
                                 resetCallback?()
                                 dismiss()
                             } else if viewModel.postActivityService.task.state == .failed {
