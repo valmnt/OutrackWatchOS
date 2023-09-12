@@ -18,6 +18,7 @@ struct LoginView: View {
     @State private var password: String = ""
     @State private var displayInitWarning: Bool = false
     @State private var displayProgressView: Bool = false
+    @State private var displayError: Bool = false
 
     var body: some View {
         VStack {
@@ -36,7 +37,9 @@ struct LoginView: View {
                         displayProgressView = true
                         await viewModel.signIn(email: email, password: password)
                         if viewModel.service.task.state == .succeeded {
-                            self.path.append(Routes.mainView)
+                            path.append(Routes.mainView)
+                        } else if viewModel.service.task.state == .failed {
+                            displayError = true
                         }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             displayProgressView = false
@@ -44,7 +47,7 @@ struct LoginView: View {
                     }
                 }
             }
-        }.alert(isPresented: .constant(viewModel.displayError || displayInitWarning)) {
+        }.alert(isPresented: .constant(displayError || displayInitWarning)) {
             let title = displayInitWarning ? R.string.localizable.initWarningTitle
             : R.string.localizable.error
             let message = displayInitWarning ? R.string.localizable.initWarningText
@@ -57,7 +60,7 @@ struct LoginView: View {
                     if displayInitWarning {
                         displayInitWarning = false
                     } else {
-                        viewModel.displayError = false
+                        displayError = false
                     }
                 }
             )
