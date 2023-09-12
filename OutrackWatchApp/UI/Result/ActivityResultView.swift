@@ -67,7 +67,7 @@ struct ActivityResultView: View {
                             if viewModel.postActivityService.task.state == .succeeded {
                                 resetCallback?()
                                 dismiss()
-                            } else {
+                            } else if viewModel.postActivityService.task.state == .failed {
                                 displayError = true
                             }
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
