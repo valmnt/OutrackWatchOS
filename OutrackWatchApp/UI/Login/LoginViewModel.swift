@@ -11,7 +11,6 @@ class LoginViewModel: ObservableObject {
 
     let service: LoginService = LoginService()
 
-    @MainActor
     func signIn(email: String, password: String) async {
         await service.proccess(dto: LoginDTO(email: email, password: password))
         if let token = (service.task.response as? LoginResponse)?.message.token {
