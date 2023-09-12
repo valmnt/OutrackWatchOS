@@ -14,13 +14,14 @@ struct MainView: View {
     @State private var selection: Tab = .sportList
 
     enum Tab {
-        case account, sportList
+        case account, sportList, training
     }
 
     var body: some View {
         TabView(selection: $selection) {
             AccountView(path: $path).tag(Tab.account)
             SportListView(path: $path).tag(Tab.sportList)
+            TrainingView().tag(Tab.training)
         }
         .navigationBarBackButtonHidden()
     }

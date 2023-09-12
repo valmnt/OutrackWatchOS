@@ -23,4 +23,8 @@ struct NetworkConstants {
     struct Activity {
         static let path = "/activity"
     }
+
+    struct Training {
+        static let path = "/training"
+    }
 }

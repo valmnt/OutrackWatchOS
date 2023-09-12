@@ -35,6 +35,10 @@
 		C94ECC342AA78C55001D4B11 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94ECC332AA78C55001D4B11 /* LoginService.swift */; };
 		C94ECC372AA78E74001D4B11 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94ECC362AA78E74001D4B11 /* NetworkConstants.swift */; };
 		C956DCF62AA4AD650089DEEE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C956DCF82AA4AD650089DEEE /* Localizable.strings */; };
+		C9578C7D2AB04693001EAB8C /* TrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9578C7C2AB04693001EAB8C /* TrainingView.swift */; };
+		C9578C802AB047F6001EAB8C /* TrainingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9578C7F2AB047F6001EAB8C /* TrainingViewModel.swift */; };
+		C9578C822AB04DAB001EAB8C /* GETTrainingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9578C812AB04DAB001EAB8C /* GETTrainingsService.swift */; };
+		C9578C852AB04EE0001EAB8C /* Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9578C842AB04EE0001EAB8C /* Training.swift */; };
 		C963748E2AA1F815005895E6 /* HKStatistics+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963748D2AA1F815005895E6 /* HKStatistics+Extension.swift */; };
 		C96374902AA216DE005895E6 /* TimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963748F2AA216DE005895E6 /* TimeInterval+Extension.swift */; };
 		C96568832AAA5ACD004B3E36 /* POSTActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96568822AAA5ACD004B3E36 /* POSTActivityService.swift */; };
@@ -99,6 +103,10 @@
 		C94ECC362AA78E74001D4B11 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 		C956DCF92AA4AD7E0089DEEE /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C956DCFE2AA4B0F00089DEEE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C9578C7C2AB04693001EAB8C /* TrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingView.swift; sourceTree = "<group>"; };
+		C9578C7F2AB047F6001EAB8C /* TrainingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingViewModel.swift; sourceTree = "<group>"; };
+		C9578C812AB04DAB001EAB8C /* GETTrainingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GETTrainingsService.swift; sourceTree = "<group>"; };
+		C9578C842AB04EE0001EAB8C /* Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training.swift; sourceTree = "<group>"; };
 		C963748D2AA1F815005895E6 /* HKStatistics+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HKStatistics+Extension.swift"; sourceTree = "<group>"; };
 		C963748F2AA216DE005895E6 /* TimeInterval+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extension.swift"; sourceTree = "<group>"; };
 		C96568822AAA5ACD004B3E36 /* POSTActivityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POSTActivityService.swift; sourceTree = "<group>"; };
@@ -203,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				D713ACBA2A9DEAD2008BF7BC /* OutrackWatchApp.entitlements */,
+				C9578C832AB04ED5001EAB8C /* Models */,
 				C94ECC112AA78B3F001D4B11 /* API */,
 				C94ECC322AA78C36001D4B11 /* Services */,
 				C931DD072A311BE400D08384 /* Utils */,
@@ -219,6 +228,7 @@
 		C931DD032A311BE400D08384 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C9578C7E2AB047E4001EAB8C /* Training */,
 				C94ECBDA2AA784EF001D4B11 /* Login */,
 				D74E92A42A9F8A67003F502A /* Result */,
 				D713ACB22A9DE4F5008BF7BC /* Dashboard */,
@@ -325,6 +335,7 @@
 			children = (
 				C94ECC332AA78C55001D4B11 /* LoginService.swift */,
 				C96568822AAA5ACD004B3E36 /* POSTActivityService.swift */,
+				C9578C812AB04DAB001EAB8C /* GETTrainingsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -335,6 +346,23 @@
 				C94ECC362AA78E74001D4B11 /* NetworkConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		C9578C7E2AB047E4001EAB8C /* Training */ = {
+			isa = PBXGroup;
+			children = (
+				C9578C7C2AB04693001EAB8C /* TrainingView.swift */,
+				C9578C7F2AB047F6001EAB8C /* TrainingViewModel.swift */,
+			);
+			path = Training;
+			sourceTree = "<group>";
+		};
+		C9578C832AB04ED5001EAB8C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C9578C842AB04EE0001EAB8C /* Training.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		C95979E82AA5EABC001A6D7B /* Utils */ = {
@@ -575,6 +603,7 @@
 			files = (
 				C94ECC262AA78B3F001D4B11 /* HTTPMethods.swift in Sources */,
 				C94ECC282AA78B3F001D4B11 /* RESTErrors.swift in Sources */,
+				C9578C802AB047F6001EAB8C /* TrainingViewModel.swift in Sources */,
 				C94ECC342AA78C55001D4B11 /* LoginService.swift in Sources */,
 				C94ECC232AA78B3F001D4B11 /* HTTPPostTask.swift in Sources */,
 				C94ECC252AA78B3F001D4B11 /* APICallerErrors.swift in Sources */,
@@ -585,6 +614,8 @@
 				C92B81062AA4B83600059C24 /* R.generated.swift in Sources */,
 				C963748E2AA1F815005895E6 /* HKStatistics+Extension.swift in Sources */,
 				D713ACB52A9DE52E008BF7BC /* ControlsView.swift in Sources */,
+				C9578C852AB04EE0001EAB8C /* Training.swift in Sources */,
+				C9578C7D2AB04693001EAB8C /* TrainingView.swift in Sources */,
 				C931DD0C2A311BE400D08384 /* SportListView.swift in Sources */,
 				C9BCCA3F2A9D3801002D77E5 /* ActivityView.swift in Sources */,
 				C968ECB82AA9B581007E9EDE /* MainView.swift in Sources */,
@@ -602,6 +633,7 @@
 				C96568852AAA64F1004B3E36 /* UserDefaults+Extension.swift in Sources */,
 				C9BCCA422A9D3861002D77E5 /* WorkoutManager.swift in Sources */,
 				D713ACBC2A9E0C8E008BF7BC /* ActivityResultView.swift in Sources */,
+				C9578C822AB04DAB001EAB8C /* GETTrainingsService.swift in Sources */,
 				C94ECC2D2AA78B3F001D4B11 /* RequestGenerator.swift in Sources */,
 				C96374902AA216DE005895E6 /* TimeInterval+Extension.swift in Sources */,
 				C94ECC372AA78E74001D4B11 /* NetworkConstants.swift in Sources */,

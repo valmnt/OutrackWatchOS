@@ -26,7 +26,7 @@ extension HKWorkoutActivityType: Identifiable {
         }
     }
 
-    var APIidentifier: String {
+    var APIidentifierForActivity: String {
         switch self {
         case .running:
             return "COURSE"
@@ -49,6 +49,15 @@ extension HKWorkoutActivityType: Identifiable {
             return .indoor
         default:
             return nil
+        }
+    }
+
+    static func from(identifier: String) -> HKWorkoutActivityType? {
+        switch identifier {
+        case "RUNNING": return .running
+        case "CYCLING": return .cycling
+        case "FITNESS": return .crossTraining
+        default: return nil
         }
     }
 }

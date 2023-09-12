@@ -12,7 +12,7 @@
 "no" = "Non";
 
 // Menu
-"workouts" = "Exercices";
+"activities" = "Activités";
 
 // Controls
 "start" = "Démarrer";
@@ -45,3 +45,7 @@
 
 // Activity
 "postActivityError" = "Une erreur est survenue lors de la sauvegarde. Souhaitez-vous réessayer ?\n\n Si vous cliquez sur 'non' vos données seront perdues.";
+
+// Training
+"training" = "Entraînements";
+"trainingErrorText" = "Une erreur est survenue lors de la récupération de vos séances.";

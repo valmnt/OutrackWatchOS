@@ -12,7 +12,7 @@
 "no" = "No";
 
 // Menu
-"workouts" = "Workouts";
+"activities" = "Workouts";
 
 // Controls
 "start" = "Start";
@@ -45,3 +45,7 @@
 
 // Activity
 "postActivityError" = "An error occurred during saving. Would you like to try again?\n\n If you click 'no', your data will be lost.";
+
+// Training
+"training" = "Trainings";
+"trainingErrorText" = "An error occurred while retrieving your trainings.";

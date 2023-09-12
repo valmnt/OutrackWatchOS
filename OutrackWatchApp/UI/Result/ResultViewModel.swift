@@ -44,7 +44,7 @@ class ResultViewModel: ObservableObject {
         guard let heartRate = workout?.statistics(for: .init(.heartRate))?.averageHearthRate(),
               let activeEnergyBurned = workout?.statistics(for: .init(.activeEnergyBurned))?.sumActiveEnergyBurned(),
               let duration = workout?.duration,
-              let sport = workout?.workoutActivityType.APIidentifier else { return }
+              let sport = workout?.workoutActivityType.APIidentifierForActivity else { return }
 
         let distanceWalkingRunning = workout?.statistics(for: .init(.distanceWalkingRunning))?.sumDistance() ?? 0
         let distanceCycling = workout?.statistics(for: .init(.distanceCycling))?.sumDistance() ?? 0
