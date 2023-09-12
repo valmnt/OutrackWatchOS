@@ -21,8 +21,8 @@ class LoginService: HTTPPostService {
 
 struct LoginResponse: Decodable {
     let message: LoginData
-}
 
-struct LoginData: Decodable {
-    let token: String
+    struct LoginData: Decodable {
+        let token: String
+    }
 }
