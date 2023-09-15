@@ -28,6 +28,10 @@ struct OutrackApp: App {
                                 .environmentObject(workoutManager)
                         }
                     }
+                    .navigationDestination(for: Training.self) { training in
+                        ActivityView(training: training)
+                            .environmentObject(workoutManager)
+                    }
             }
         }
     }

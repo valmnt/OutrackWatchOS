@@ -10,20 +10,11 @@ import SwiftUI
 struct TrainingView: View {
 
     @ObservedObject var viewModel: TrainingViewModel = TrainingViewModel()
-    @State var displayProgressView: Bool = false {
-        didSet {
-            if displayProgressView {
-                displayError = false
-            }
-        }
-    }
-    @State var displayError: Bool = false {
-        didSet {
-            if displayError {
-                displayProgressView = false
-            }
-        }
-    }
+    @EnvironmentObject var workoutManager: WorkoutManager
+    @Binding var path: NavigationPath
+    @State var displayProgressView: Bool = false
+    @State var displayError: Bool = false
+    @State var trainings: [Training] = []
 
     var body: some View {
         VStack {
@@ -38,9 +29,10 @@ struct TrainingView: View {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: Color(R.color.orange)))
                 } else {
-                    List(viewModel.trainings) { training in
+                    List(trainings) { training in
                         Button(training.workoutActivityType?.name ?? "") {
-                            print(training)
+                            workoutManager.selectedWorkoutActivity = training.workoutActivityType
+                            path.append(training)
                         }
                         .padding(EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5))
                     }
@@ -50,7 +42,7 @@ struct TrainingView: View {
         }.onAppear {
             Task {
                 displayProgressView = true
-                await viewModel.getTrainings()
+                trainings = await viewModel.getTrainings()
                 if viewModel.getTrainingsService.task.state == .succeeded {
                     displayProgressView = false
                 } else if viewModel.getTrainingsService.task.state == .failed {
@@ -63,6 +55,6 @@ struct TrainingView: View {
 
 struct TrainingView_Previews: PreviewProvider {
     static var previews: some View {
-        TrainingView()
+        TrainingView(path: .constant(.init()))
     }
 }

@@ -11,8 +11,8 @@ import HealthKit
 class WorkoutManager: NSObject, ObservableObject {
 
     // MARK: - States
-    @Published private(set) var started = false
-    @Published private(set) var running = false
+    @Published var running = false
+    @Published var started = false
     @Published var ended = false
 
     // MARK: - HK Variables
@@ -23,6 +23,7 @@ class WorkoutManager: NSObject, ObservableObject {
     var builder: HKLiveWorkoutBuilder?
     var session: HKWorkoutSession?
     var selectedWorkoutActivity: HKWorkoutActivityType?
+    var trainingId: Int?
 
     // MARK: - Callbacks
     var endCallback: (() -> Void)?
@@ -97,27 +98,36 @@ extension WorkoutManager {
 
     func end(waitingCallback: () -> Void, endCallback: @escaping (() -> Void)) {
         self.endCallback = endCallback
-        started = false
-        running = false
+        if trainingId == nil {
+            started = false
+            running = false
+        }
         waitingCallback()
         session?.end()
     }
 
     private func resume() {
-        session?.resume()
+        if session?.state != .ended {
+            session?.resume()
+        }
         running = true
     }
 
-    private func pause() {
-        session?.pause()
+    func pause() {
+        if session?.state != .ended {
+            session?.pause()
+        }
         running = false
     }
 
     func reset() {
+        started = false
+        running = false
         ended = false
         builder = nil
         workout = nil
         session = nil
+        trainingId = nil
         endCallback = nil
         activityData = [:]
         selectedWorkoutActivity = nil
@@ -134,7 +144,6 @@ extension WorkoutManager: HKWorkoutSessionDelegate {
                     DispatchQueue.main.async {
                         self.workout = workout
                         self.endCallback?()
-                        self.ended = true
                     }
                 }
             }
