@@ -13,6 +13,7 @@ struct Training: Decodable, Identifiable, Hashable {
     let sport: String
     let trainingSteps: [TrainingSteps]
     let targets: [Target]
+    let trainingDate: [String]
     let intensity: Int?
 
     struct TrainingSteps: Decodable {
@@ -36,6 +37,19 @@ struct Training: Decodable, Identifiable, Hashable {
 extension Training {
     var workoutActivityType: HKWorkoutActivityType? {
         HKWorkoutActivityType.from(identifier: self.sport)
+    }
+
+    var todayTime: Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let todayDateString = dateFormatter.string(from: Date())
+
+        for dateString in trainingDate where dateString.hasPrefix(todayDateString) {
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            return dateFormatter.date(from: dateString)
+        }
+
+        return nil
     }
 }
 
