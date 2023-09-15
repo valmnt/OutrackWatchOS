@@ -16,6 +16,12 @@ struct TrainingView: View {
     @State var displayError: Bool = false
     @State var trainings: [Training] = []
 
+    let timeFormatter: DateFormatter = {
+       let formatter = DateFormatter()
+       formatter.dateFormat = "HH:mm"
+       return formatter
+   }()
+
     var body: some View {
         VStack {
             if displayError {
@@ -37,9 +43,16 @@ struct TrainingView: View {
                                 workoutManager.selectedWorkoutActivity = training.workoutActivityType
                                 path.append(training)
                             }, label: {
-                                Text("\(training.workoutActivityType?.name ?? "")")
-                                    .foregroundColor(buttonColor(intensity: training.intensity))
-                                    .fontWeight(.semibold)
+                                HStack {
+                                    Text("\(training.workoutActivityType?.name ?? "")")
+                                        .foregroundColor(buttonColor(intensity: training.intensity))
+                                        .fontWeight(.semibold)
+
+                                    if let todayTime = training.todayTime {
+                                        Text(todayTime, formatter: timeFormatter)
+                                            .fontWeight(.semibold)
+                                    }
+                                }
                             })
                             .padding(EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5))
                         }
