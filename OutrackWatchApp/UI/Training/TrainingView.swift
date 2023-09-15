@@ -64,11 +64,11 @@ struct TrainingView: View {
     func buttonColor(intensity: Int?) -> Color {
         guard let intensity = intensity else { return Color(.gray) }
         if intensity < 40 {
-            return Color(.green)
+            return Color(R.color.green)
         } else if intensity < 80 {
-            return Color(.orange)
+            return Color(R.color.orange)
         } else {
-            return Color(.red)
+            return Color(R.color.red)
         }
     }
 }
