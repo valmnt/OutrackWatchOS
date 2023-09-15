@@ -10,6 +10,7 @@
 "error" = "Erreur";
 "yes" = "Oui";
 "no" = "Non";
+"pause" = "Pause";
 
 // Menu
 "activities" = "Activités";
@@ -19,6 +20,7 @@
 "pause" = "Pause";
 "resume" = "Continuer";
 "end" = "Fin";
+"next" = "Suivant";
 
 // Sports
 "bike" = "Vélo";
@@ -49,3 +51,9 @@
 // Training
 "training" = "Entraînements";
 "trainingErrorText" = "Une erreur est survenue lors de la récupération de vos séances.";
+
+// Goals
+"warmup" = "Echauffement";
+"stretching" = "Etirement";
+"rest" = "Repos";
+"exercise" = "Exercice";

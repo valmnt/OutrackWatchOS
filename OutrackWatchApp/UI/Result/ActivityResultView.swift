@@ -14,11 +14,12 @@ struct ActivityResultView: View {
     @Environment(\.dismiss) var dismiss
     @State var displayProgressView: Bool = false
     @State var displayError: Bool = false
-    var resetCallback: (() -> Void)?
+    var resetCallback: (() -> Void)
 
-    init(workout: HKWorkout? = nil, resetCallback: (() -> Void)? = nil) {
-        viewModel.workout = workout
+    init(workout: HKWorkout?, trainingId: Int? = nil, resetCallback: @escaping (() -> Void)) {
         self.resetCallback = resetCallback
+        viewModel.workout = workout
+        viewModel.trainingId = trainingId
     }
 
     var body: some View {
@@ -66,7 +67,7 @@ struct ActivityResultView: View {
                             await viewModel.postActivity()
                             if viewModel.postActivityService.task.state == .succeeded ||
                                 viewModel.postActivityService.task.state == .free {
-                                resetCallback?()
+                                resetCallback()
                                 dismiss()
                             } else if viewModel.postActivityService.task.state == .failed {
                                 displayError = true
@@ -85,7 +86,7 @@ struct ActivityResultView: View {
                 Alert(title: Text(R.string.localizable.error),
                       message: Text(R.string.localizable.postActivityError),
                       primaryButton: .default(Text(R.string.localizable.no)) {
-                    resetCallback?()
+                    resetCallback()
                     displayError = false
                     dismiss()
                 },
@@ -99,6 +100,6 @@ struct ActivityResultView: View {
 
 struct WorkoutResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ActivityResultView()
+        ActivityResultView(workout: nil, resetCallback: {})
     }
 }

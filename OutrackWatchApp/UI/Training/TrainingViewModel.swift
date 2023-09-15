@@ -9,16 +9,11 @@ import Foundation
 
 class TrainingViewModel: ObservableObject {
 
-    @Published var trainings: [Training] = []
-
     let getTrainingsService: GETTrainingsService = GETTrainingsService()
 
-    func getTrainings() async {
+    func getTrainings() async -> [Training] {
         await getTrainingsService.proccess(accessToken: UserDefaults.standard.token)
-        if let response = (getTrainingsService.task.response as? GetTrainingsResponse)?.message {
-            DispatchQueue.main.async {
-                self.trainings = response
-            }
-        }
+        let response = (getTrainingsService.task.response as? GetTrainingsResponse)?.message ?? []
+        return response
     }
 }

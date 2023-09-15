@@ -21,9 +21,22 @@ struct MainView: View {
         TabView(selection: $selection) {
             AccountView(path: $path).tag(Tab.account)
             SportListView(path: $path).tag(Tab.sportList)
-            TrainingView().tag(Tab.training)
+            TrainingView(path: $path).tag(Tab.training)
         }
         .navigationBarBackButtonHidden()
+        .onAppear {
+            workoutManager.requestAuthorization()
+        }
+        .sheet(isPresented: $workoutManager.ended) {
+            ActivityResultView(workout: workoutManager.workout,
+                               trainingId: workoutManager.trainingId,
+                               resetCallback: workoutManager.reset)
+                .toolbar(content: {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("") {}
+                    }
+                })
+        }
     }
 }
 

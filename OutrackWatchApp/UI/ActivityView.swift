@@ -7,34 +7,77 @@
 
 import SwiftUI
 import HealthKit
+import Combine
 
 struct ActivityView: View {
 
     @EnvironmentObject var workoutManager: WorkoutManager
     @State private var selection: Tab = .controls
     @State private var displayProgressionView: Bool = false
+    @State private var stepIndex = 0
+    @State private var timeRemaining: Int
+    @State private var cancellable: AnyCancellable?
+    @State private var trainingEnded: Bool = false
+    private var training: Training?
+
+    init(training: Training? = nil) {
+        self.training = training
+        timeRemaining = training?.trainingSteps[0].duration ?? 0
+    }
 
     enum Tab {
-        case controls, metrics
+        case controls, metrics, goals
     }
 
     var body: some View {
         if !displayProgressionView {
-            VStack {
-                TabView(selection: $selection) {
-                    ControlsView {
-                        displayProgressionView = true
-                    }.tag(Tab.controls)
-                    MetricsView().tag(Tab.metrics)
+            TabView(selection: $selection) {
+                ControlsView(
+                         cancellable: $cancellable,
+                         displayProgressView: $displayProgressionView,
+                         trainingEnded: $trainingEnded,
+                         trainingId: training?.id).tag(Tab.controls)
+                if let training = training {
+                    StepsView(
+                        timeRemaining: $timeRemaining,
+                        stepIndex: $stepIndex,
+                        displayProgressView: $displayProgressionView,
+                        training: training)
+                    .tag(Tab.goals)
+                    .onChange(of: workoutManager.started) { started in
+                        if started {
+                            startTimer()
+                        }
+                    }
                 }
-                .navigationTitle(workoutManager.selectedWorkoutActivity?.name ?? "")
-                .navigationBarBackButtonHidden(workoutManager.started)
+                MetricsView().tag(Tab.metrics)
             }
+            .navigationTitle(workoutManager.selectedWorkoutActivity?.name ?? "")
+            .navigationBarBackButtonHidden(workoutManager.started)
         } else {
             ProgressView()
                 .progressViewStyle(CircularProgressViewStyle(tint: Color(R.color.orange)))
                 .navigationBarBackButtonHidden()
         }
+    }
+
+    func startTimer() {
+        cancellable = Timer.publish(every: 1, on: .main, in: .common).autoconnect().sink { _ in
+            guard let training = training, workoutManager.running else { return }
+            if timeRemaining > 0 {
+                timeRemaining -= 1
+                if timeRemaining == 0 {
+                    WKInterfaceDevice.current().play(.stop)
+                }
+            } else if stepIndex == training.trainingSteps.count - 1 {
+                trainingEnded = true
+                stopTimer()
+            }
+        }
+    }
+
+    func stopTimer() {
+        cancellable?.cancel()
     }
 }
 

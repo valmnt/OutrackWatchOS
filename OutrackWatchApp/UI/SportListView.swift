@@ -25,17 +25,6 @@ struct SportListView: View {
         }
         .listStyle(.carousel)
         .navigationBarTitle(R.string.localizable.activities.callAsFunction())
-        .onAppear {
-            workoutManager.requestAuthorization()
-        }
-        .sheet(isPresented: $workoutManager.ended) {
-            ActivityResultView(workout: workoutManager.workout, resetCallback: workoutManager.reset)
-                .toolbar(content: {
-                    ToolbarItem(placement: .cancellationAction) {
-                        Button("") {}
-                    }
-                })
-        }
     }
 }
 

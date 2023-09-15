@@ -19,6 +19,7 @@ class ResultViewModel: ObservableObject {
         statistics.keys.sorted(by: { $0.rawValue < $1.rawValue })
     }
 
+    var trainingId: Int?
     var workout: HKWorkout? {
         didSet {
             getActivityResult()
@@ -41,11 +42,11 @@ class ResultViewModel: ObservableObject {
     }
 
     func postActivity() async {
-        guard let heartRate = workout?.statistics(for: .init(.heartRate))?.averageHearthRate(),
-              let activeEnergyBurned = workout?.statistics(for: .init(.activeEnergyBurned))?.sumActiveEnergyBurned(),
-              let duration = workout?.duration,
+        guard let duration = workout?.duration,
               let sport = workout?.workoutActivityType.APIidentifierForActivity else { return }
 
+        let heartRate = workout?.statistics(for: .init(.heartRate))?.averageHearthRate() ?? 0
+        let activeEnergyBurned = workout?.statistics(for: .init(.activeEnergyBurned))?.sumActiveEnergyBurned() ?? 0
         let distanceWalkingRunning = workout?.statistics(for: .init(.distanceWalkingRunning))?.sumDistance() ?? 0
         let distanceCycling = workout?.statistics(for: .init(.distanceCycling))?.sumDistance() ?? 0
         let runningSpeed = workout?.statistics(for: .init(.runningSpeed))?.averageRunningSpeed() ?? 0
@@ -57,7 +58,8 @@ class ResultViewModel: ObservableObject {
                                    activeEnergyBurned: activeEnergyBurned,
                                    distanceWalkingRunning: distanceWalkingRunning,
                                    distanceCycling: distanceCycling,
-                                   runningSpeed: runningSpeed))],
+                                   runningSpeed: runningSpeed),
+            trainingId: trainingId)],
            accessToken: UserDefaults.standard.token)
     }
 }
@@ -65,13 +67,14 @@ class ResultViewModel: ObservableObject {
 private struct ActivityDTO: Encodable {
     let sport: String
     let healthData: HealthData
+    let trainingId: Int?
 }
 
 private struct HealthData: Encodable {
     let duration: String
     let heartRate: Double
     let activeEnergyBurned: Double
-    let distanceWalkingRunning: Double?
-    let distanceCycling: Double?
-    let runningSpeed: Double?
+    let distanceWalkingRunning: Double
+    let distanceCycling: Double
+    let runningSpeed: Double
 }
