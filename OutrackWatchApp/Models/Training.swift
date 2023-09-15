@@ -13,6 +13,7 @@ struct Training: Decodable, Identifiable, Hashable {
     let sport: String
     let trainingSteps: [TrainingSteps]
     let targets: [Target]
+    let intensity: Int?
 
     struct TrainingSteps: Decodable {
         let step: String

@@ -30,10 +30,14 @@ struct TrainingView: View {
                         .progressViewStyle(CircularProgressViewStyle(tint: Color(R.color.orange)))
                 } else {
                     List(trainings) { training in
-                        Button(training.workoutActivityType?.name ?? "") {
+                        Button(action: {
                             workoutManager.selectedWorkoutActivity = training.workoutActivityType
                             path.append(training)
-                        }
+                        }, label: {
+                            Text("\(training.workoutActivityType?.name ?? "")")
+                                .foregroundColor(buttonColor(intensity: training.intensity))
+                                .fontWeight(.semibold)
+                        })
                         .padding(EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5))
                     }
                     .navigationTitle(R.string.localizable.training.callAsFunction())
@@ -49,6 +53,17 @@ struct TrainingView: View {
                     displayError = true
                 }
             }
+        }
+    }
+
+    func buttonColor(intensity: Int?) -> Color {
+        guard let intensity = intensity else { return Color(.gray) }
+        if intensity < 40 {
+            return Color(.green)
+        } else if intensity < 80 {
+            return Color(.orange)
+        } else {
+            return Color(.red)
         }
     }
 }
