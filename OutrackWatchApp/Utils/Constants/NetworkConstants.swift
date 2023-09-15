@@ -25,6 +25,6 @@ struct NetworkConstants {
     }
 
     struct Training {
-        static let path = "/training"
+        static let path = "/training/today"
     }
 }
