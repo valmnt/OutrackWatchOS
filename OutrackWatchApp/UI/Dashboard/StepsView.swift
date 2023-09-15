@@ -50,6 +50,7 @@ struct StepsView: View {
                 }, label: {
                     SecondaryText(text: R.string.localizable.next.callAsFunction())
                 })
+                .frame(maxWidth: 160)
                 .tint(Color(R.color.orange))
                 .font(.subheadline)
             }

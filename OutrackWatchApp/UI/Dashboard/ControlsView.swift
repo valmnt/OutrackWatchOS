@@ -37,7 +37,7 @@ struct ControlsView: View {
                     }
                     .tint(.red)
                     .font(.title2)
-                    .frame(width: trainingEnded ? 120 : .none)
+                    .frame(maxWidth: trainingEnded ? 120 : .none)
                     Text(R.string.localizable.end)
                 }
                 if !trainingEnded {
@@ -84,7 +84,7 @@ struct ControlsView: View {
                     Image(systemName: "play")
                 }
                 .font(.title2)
-                .frame(width: 120)
+                .frame(maxWidth: 120)
                 .tint(Color(R.color.orange))
                 Text(R.string.localizable.start)
             }

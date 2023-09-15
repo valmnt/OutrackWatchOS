@@ -19,6 +19,7 @@ struct AccountView: View {
             Text(R.string.localizable.signout)
         })
         .tint(.red)
+        .frame(maxWidth: 160)
         .navigationBarTitle(R.string.localizable.account.callAsFunction())
     }
 }
