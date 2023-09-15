@@ -49,8 +49,9 @@
 "postActivityError" = "Une erreur est survenue lors de la sauvegarde. Souhaitez-vous réessayer ?\n\n Si vous cliquez sur 'non' vos données seront perdues.";
 
 // Training
-"training" = "Entraînements";
+"training" = "Séances";
 "trainingErrorText" = "Une erreur est survenue lors de la récupération de vos séances.";
+"emptyTraining" = "Vous n'avez aucune séance programmée pour aujourd'hui.";
 
 // Goals
 "warmup" = "Echauffement";

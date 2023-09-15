@@ -51,6 +51,7 @@
 // Training
 "training" = "Trainings";
 "trainingErrorText" = "An error occurred while retrieving your trainings.";
+"emptyTraining" = "You have no training scheduled for today.";
 
 // Goals
 "warmup" = "Warmup";

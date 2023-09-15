@@ -29,21 +29,26 @@ struct TrainingView: View {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: Color(R.color.orange)))
                 } else {
-                    List(trainings) { training in
-                        Button(action: {
-                            workoutManager.selectedWorkoutActivity = training.workoutActivityType
-                            path.append(training)
-                        }, label: {
-                            Text("\(training.workoutActivityType?.name ?? "")")
-                                .foregroundColor(buttonColor(intensity: training.intensity))
-                                .fontWeight(.semibold)
-                        })
-                        .padding(EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5))
+                    if trainings.isEmpty {
+                        Text(R.string.localizable.emptyTraining)
+                    } else {
+                        List(trainings) { training in
+                            Button(action: {
+                                workoutManager.selectedWorkoutActivity = training.workoutActivityType
+                                path.append(training)
+                            }, label: {
+                                Text("\(training.workoutActivityType?.name ?? "")")
+                                    .foregroundColor(buttonColor(intensity: training.intensity))
+                                    .fontWeight(.semibold)
+                            })
+                            .padding(EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5))
+                        }
                     }
-                    .navigationTitle(R.string.localizable.training.callAsFunction())
                 }
             }
-        }.onAppear {
+        }
+        .navigationTitle(R.string.localizable.training.callAsFunction())
+        .onAppear {
             Task {
                 displayProgressView = true
                 trainings = await viewModel.getTrainings()
