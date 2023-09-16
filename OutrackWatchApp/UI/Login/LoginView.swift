@@ -14,8 +14,8 @@ struct LoginView: View {
     @ObservedObject var viewModel: LoginViewModel = LoginViewModel()
     @Binding var path: NavigationPath
 
-    @State private var email: String = "premier.test@gmail.com"
-    @State private var password: String = "123"
+    @State private var email: String = ""
+    @State private var password: String = ""
     @State private var displayInitWarning: Bool = false
     @State private var displayProgressView: Bool = false
     @State private var displayError: Bool = false
