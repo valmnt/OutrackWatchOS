@@ -12,7 +12,6 @@ struct Training: Decodable, Identifiable, Hashable {
     let id: Int
     let sport: String
     let trainingSteps: [TrainingSteps]
-    let targets: [Target]
     let trainingDate: [String]
     let isFinished: Bool
     let intensity: Int
