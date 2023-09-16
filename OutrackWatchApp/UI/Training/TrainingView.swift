@@ -75,8 +75,7 @@ struct TrainingView: View {
         }
     }
 
-    func buttonColor(intensity: Int?) -> Color {
-        guard let intensity = intensity else { return Color(.gray) }
+    func buttonColor(intensity: Int) -> Color {
         if intensity < 40 {
             return Color(R.color.green)
         } else if intensity < 80 {
