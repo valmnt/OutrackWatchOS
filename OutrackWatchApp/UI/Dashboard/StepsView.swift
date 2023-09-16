@@ -83,6 +83,11 @@ struct StepsView_Previews: PreviewProvider {
         StepsView(timeRemaining: .constant(0),
                   stepIndex: .constant(0),
                   displayProgressView: .constant(false),
-                  training: Training(id: 0, sport: "", trainingSteps: [], targets: [], trainingDate: [], intensity: 0))
+                  training: Training(id: 0, sport: "",
+                                     trainingSteps: [],
+                                     targets: [],
+                                     trainingDate: [],
+                                     isFinished: false,
+                                     intensity: 0))
     }
 }

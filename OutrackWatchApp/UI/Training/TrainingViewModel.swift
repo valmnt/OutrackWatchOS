@@ -21,6 +21,8 @@ class TrainingViewModel: ObservableObject {
         return trainings.sorted {
             guard let first = $0.todayTime, let second = $1.todayTime else { return false }
             return first < second
+        }.filter {
+            !$0.isFinished
         }
     }
 }
