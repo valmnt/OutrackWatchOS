@@ -47,6 +47,7 @@ struct TrainingView: View {
                                     Text("\(training.workoutActivityType?.name ?? "")")
                                         .foregroundColor(buttonColor(intensity: training.intensity))
                                         .fontWeight(.semibold)
+                                        .font(.system(size: 15))
 
                                     if let todayTime = training.todayTime {
                                         Text(todayTime, formatter: timeFormatter)
