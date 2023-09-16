@@ -27,7 +27,7 @@ struct MainView: View {
         .onAppear {
             workoutManager.requestAuthorization()
         }
-        .sheet(isPresented: $workoutManager.ended) {
+        .sheet(isPresented: .constant(workoutManager.ended && workoutManager.workout != nil)) {
             ActivityResultView(workout: workoutManager.workout,
                                trainingId: workoutManager.trainingId,
                                resetCallback: workoutManager.reset)
