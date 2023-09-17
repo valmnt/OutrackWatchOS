@@ -31,6 +31,7 @@ struct MainView: View {
             ActivityResultView(workout: workoutManager.workout,
                                trainingId: workoutManager.trainingId,
                                resetCallback: workoutManager.reset)
+                .interactiveDismissDisabled()
                 .toolbar(content: {
                     ToolbarItem(placement: .cancellationAction) {
                         Button("") {}
