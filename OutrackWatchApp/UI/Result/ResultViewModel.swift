@@ -56,9 +56,15 @@ class ResultViewModel: ObservableObject {
             healthData: HealthData(duration: duration.formatElapsedTime(),
                                    heartRate: heartRate,
                                    activeEnergyBurned: activeEnergyBurned,
-                                   distanceWalkingRunning: distanceWalkingRunning,
-                                   distanceCycling: distanceCycling,
-                                   runningSpeed: runningSpeed),
+                                   distanceWalkingRunning: workout?.workoutActivityType == .running
+                                   ? distanceWalkingRunning
+                                   : 0,
+                                   distanceCycling: workout?.workoutActivityType == .cycling
+                                   ? distanceCycling
+                                   : 0,
+                                   runningSpeed: workout?.workoutActivityType == .running
+                                   ? runningSpeed
+                                   : 0),
             trainingId: trainingId)],
            accessToken: UserDefaults.standard.token)
     }
