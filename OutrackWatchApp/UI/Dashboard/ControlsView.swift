@@ -113,18 +113,26 @@ struct ControlsView: View {
             displayProgressView = true
         }, endCallback: {
             dismiss()
-            workoutManager.ended = true
+            endTraining()
         })
     }
 
     private func stopTrainingWhileSessionIsEnded() {
         dismiss()
-        workoutManager.ended = true
+        endTraining()
     }
 
     private func stopTrainingWhileSessionIsNotStarted() {
-        workoutManager.reset()
         dismiss()
+        endTraining()
+    }
+
+    private func endTraining() {
+        if workoutManager.workout != nil {
+            workoutManager.ended = true
+        } else {
+            workoutManager.reset()
+        }
     }
 }
 

@@ -38,6 +38,9 @@ struct StepsView: View {
                             workoutManager.running = false
                             displayProgressView = true
                         }, endCallback: {
+                            if workoutManager.workout == nil {
+                                workoutManager.builder = nil
+                            }
                             workoutManager.running = true
                             displayProgressView = false
                         })
