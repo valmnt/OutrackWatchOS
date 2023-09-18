@@ -29,11 +29,11 @@ extension HKWorkoutActivityType: Identifiable {
     var APIidentifierForActivity: String {
         switch self {
         case .running:
-            return "COURSE"
+            return "RUNNING"
         case .cycling:
-            return "CYCLISME"
+            return "CYCLING"
         case .crossTraining:
-            return "MUSCULATION"
+            return "FITNESS"
         default:
             return ""
         }
