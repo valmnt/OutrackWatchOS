@@ -53,7 +53,7 @@ class ResultViewModel: ObservableObject {
 
         await postActivityService.proccess(dto: [ActivityDTO(
             sport: sport,
-            healthData: HealthData(duration: duration.formatElapsedTime(),
+            healthData: HealthData(duration: duration,
                                    heartRate: heartRate,
                                    activeEnergyBurned: activeEnergyBurned,
                                    distanceWalkingRunning: workout?.workoutActivityType == .running
@@ -77,7 +77,7 @@ private struct ActivityDTO: Encodable {
 }
 
 private struct HealthData: Encodable {
-    let duration: String
+    let duration: Double
     let heartRate: Double
     let activeEnergyBurned: Double
     let distanceWalkingRunning: Double
