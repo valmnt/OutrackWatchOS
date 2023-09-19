@@ -8,6 +8,7 @@
 import SwiftUI
 import HealthKit
 import Combine
+import WatchKit
 
 struct ActivityView: View {
 
@@ -18,6 +19,7 @@ struct ActivityView: View {
     @State private var timeRemaining: Int
     @State private var cancellable: AnyCancellable?
     @State private var trainingEnded: Bool = false
+    @State private var session: WKExtendedRuntimeSession?
     private var training: Training?
 
     init(training: Training? = nil) {
@@ -34,6 +36,7 @@ struct ActivityView: View {
             TabView(selection: $selection) {
                 ControlsView(
                          cancellable: $cancellable,
+                         runtimeSession: $session,
                          displayProgressView: $displayProgressionView,
                          trainingEnded: $trainingEnded,
                          trainingId: training?.id).tag(Tab.controls)
@@ -62,6 +65,8 @@ struct ActivityView: View {
     }
 
     func startTimer() {
+        session = WKExtendedRuntimeSession()
+        session?.start()
         cancellable = Timer.publish(every: 1, on: .main, in: .common).autoconnect().sink { _ in
             guard let training = training, workoutManager.running else { return }
             if timeRemaining > 0 {
@@ -77,6 +82,8 @@ struct ActivityView: View {
     }
 
     func stopTimer() {
+        session?.invalidate()
+        session = nil
         cancellable?.cancel()
     }
 }

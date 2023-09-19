@@ -13,6 +13,7 @@ struct ControlsView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
     @Environment(\.dismiss) var dismiss
     @Binding var cancellable: AnyCancellable?
+    @Binding var runtimeSession: WKExtendedRuntimeSession?
     @Binding var displayProgressView: Bool
     @Binding var trainingEnded: Bool
     var trainingId: Int?
@@ -123,6 +124,7 @@ struct ControlsView: View {
     }
 
     private func end() {
+        runtimeSession?.invalidate()
         if workoutManager.workout != nil {
             workoutManager.ended = true
         } else {
@@ -134,6 +136,7 @@ struct ControlsView: View {
 struct ControlsView_Previews: PreviewProvider {
     static var previews: some View {
         ControlsView(cancellable: .constant(nil),
+                     runtimeSession: .constant(nil),
                      displayProgressView: .constant(true),
                      trainingEnded: .constant(false),
                      trainingId: 0)
