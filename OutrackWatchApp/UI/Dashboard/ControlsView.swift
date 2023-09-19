@@ -25,12 +25,7 @@ struct ControlsView: View {
                         if trainingId != nil {
                             stopTraining()
                         } else {
-                            workoutManager.end(waitingCallback: {
-                                displayProgressView = true
-                            }, endCallback: {
-                                dismiss()
-                                workoutManager.ended = true
-                            })
+                            stopWhileIsRunning()
                         }
                     } label: {
                         Image(systemName: "xmark")
@@ -100,34 +95,34 @@ struct ControlsView: View {
     private func stopTraining() {
         cancellable?.cancel()
         if workoutManager.session?.state == .running {
-            stopTrainingWhileSessionIsRunning()
+            stopWhileIsRunning()
         } else if workoutManager.session?.state == .ended {
-            stopTrainingWhileSessionIsEnded()
+            stopWhileIsEnded()
         } else {
-            stopTrainingWhileSessionIsNotStarted()
+            stopWhileIsNotStarted()
         }
     }
 
-    private func stopTrainingWhileSessionIsRunning() {
+    private func stopWhileIsRunning() {
         workoutManager.end(waitingCallback: {
             displayProgressView = true
         }, endCallback: {
             dismiss()
-            endTraining()
+            end()
         })
     }
 
-    private func stopTrainingWhileSessionIsEnded() {
+    private func stopWhileIsEnded() {
         dismiss()
-        endTraining()
+        end()
     }
 
-    private func stopTrainingWhileSessionIsNotStarted() {
+    private func stopWhileIsNotStarted() {
         dismiss()
-        endTraining()
+        end()
     }
 
-    private func endTraining() {
+    private func end() {
         if workoutManager.workout != nil {
             workoutManager.ended = true
         } else {
