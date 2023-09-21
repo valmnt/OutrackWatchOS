@@ -35,10 +35,11 @@ struct LoginView: View {
                 Button(R.string.localizable.signin.callAsFunction()) {
                     Task {
                         displayProgressView = true
+                        viewModel.service = LoginService()
                         await viewModel.signIn(email: email, password: password)
-                        if viewModel.service.task.state == .succeeded {
+                        if viewModel.service?.task.state == .succeeded {
                             path.append(Routes.mainView)
-                        } else if viewModel.service.task.state == .failed {
+                        } else if viewModel.service?.task.state == .failed {
                             displayError = true
                         }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
