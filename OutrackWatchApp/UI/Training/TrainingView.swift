@@ -66,8 +66,9 @@ struct TrainingView: View {
             Task {
                 displayProgressView = true
                 trainings = await viewModel.getTrainings()
+                displayProgressView = false
                 if viewModel.getTrainingsService.task.state == .succeeded {
-                    displayProgressView = false
+                    displayError = false
                 } else if viewModel.getTrainingsService.task.state == .failed {
                     displayError = true
                 }
